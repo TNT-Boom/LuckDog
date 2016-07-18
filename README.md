@@ -1,2 +1,2 @@
 # LuckDog
-learn some algorithm and java grammer
+learn some algorithm and java gra
