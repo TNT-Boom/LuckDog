@@ -108,7 +108,6 @@ public class PostordertTraversal implements BaseAlgorithm
 			if(root == null)
 				return result;
 			TreeNode curr = root;
-			TreeNode pre = null;
 			Stack<TreeNode> stack = new Stack<>();
 			stack.push(root);
 			while(!stack.isEmpty())
@@ -121,15 +120,15 @@ public class PostordertTraversal implements BaseAlgorithm
 				}
 				else
 				{
-					if(curr.left != null)
-					{
-						stack.push(curr.left);
-						curr.left = null;
-					}
 					if(curr.right != null)
 					{
 						stack.push(curr.right);
 						curr.right = null;
+					}
+					if(curr.left != null)
+					{
+						stack.push(curr.left);
+						curr.left = null;
 					}
 				}
 			}
