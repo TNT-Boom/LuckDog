@@ -16,7 +16,9 @@ public class PostordertTraversal implements BaseAlgorithm
 	{
 		Solution solution = new Solution();
 		solution.init();
-		System.out.println(solution.test(root));
+		System.out.println("recursionPostorder: " + solution.secursionPostorder(root));
+		System.out.println("noSecursionPostorder: " + solution.noSecursionPostorder(root));
+		System.out.println("noSecursionPostorderSimple: " + solution.noSecursionPostorderSimple(root));
 	}
 
 	/**
@@ -36,7 +38,7 @@ public class PostordertTraversal implements BaseAlgorithm
 
 	public class Solution
 	{
-		public List<Integer> postorderTraversal(TreeNode root)
+		public List<Integer> secursionPostorder(TreeNode root)
 		{
 			List<Integer> result = new ArrayList<>();
 			postorderTraversal(root, result);
@@ -52,7 +54,7 @@ public class PostordertTraversal implements BaseAlgorithm
 			result.add(root.val);
 		}
 
-		public List<Integer> test(TreeNode root)
+		public List<Integer> noSecursionPostorder(TreeNode root)
 		{
 			List<Integer> result = new ArrayList<>();
 
@@ -100,6 +102,41 @@ public class PostordertTraversal implements BaseAlgorithm
 			return result;
 		}
 
+		public List<Integer> noSecursionPostorderSimple(TreeNode root)
+		{
+			List<Integer> result = new ArrayList<>();
+			if(root == null)
+				return result;
+			TreeNode curr = root;
+			TreeNode pre = null;
+			Stack<TreeNode> stack = new Stack<>();
+			stack.push(root);
+			while(!stack.isEmpty())
+			{
+				curr = stack.peek();
+				if(curr.left == null && curr.right == null)
+				{
+					TreeNode leaf = stack.pop();
+					result.add(leaf.val);
+				}
+				else
+				{
+					if(curr.left != null)
+					{
+						stack.push(curr.left);
+						curr.left = null;
+					}
+					if(curr.right != null)
+					{
+						stack.push(curr.right);
+						curr.right = null;
+					}
+				}
+			}
+			
+			return result;
+		}
+		
 		public void init()
 		{
 			root = new TreeNode(1);
