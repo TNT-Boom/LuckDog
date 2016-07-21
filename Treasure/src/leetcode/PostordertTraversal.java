@@ -54,6 +54,7 @@ public class PostordertTraversal implements BaseAlgorithm
 			result.add(root.val);
 		}
 
+
 		public List<Integer> noSecursionPostorder(TreeNode root)
 		{
 			List<Integer> result = new ArrayList<>();
@@ -102,6 +103,9 @@ public class PostordertTraversal implements BaseAlgorithm
 			return result;
 		}
 
+		/*
+		 * 感觉是上一个方法里记录了树的各种关系，而对此题仅需要知道节点上下节点关系，所以肯定存在压缩的空间
+		 */
 		public List<Integer> noSecursionPostorderSimple(TreeNode root)
 		{
 			List<Integer> result = new ArrayList<>();

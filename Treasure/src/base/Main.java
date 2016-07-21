@@ -22,29 +22,30 @@ public class Main
 				put(4, "leetcode.GuessNum");
 				put(5, "leetcode.ReverseVowelsString");
 				put(6, "leetcode.PostordertTraversal");
+				put(7, "leetcode.FindKPairsWithSmallestSums");
+				put(8, "leetcode.SubOfTwoInt");
+				put(9, "leetcode.AddDigits");
+				put(10, "leetcode.NimGame");
 			}
 		};
 
 		try
 		{
-			int algrithmIndex = 6;
-			Class algrithm = Class.forName(algrithmMap.get(algrithmIndex));
+			int algrithmIndex = 7;
+			Class<?> algrithm = Class.forName(algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
 		}
 		catch (ClassNotFoundException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		catch (InstantiationException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		catch (IllegalAccessException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
