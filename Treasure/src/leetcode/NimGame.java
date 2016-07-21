@@ -20,7 +20,7 @@ public class NimGame implements BaseAlgorithm
 	 * 若有(m + 1)k + s 个球，其中 0 < s <= m
 	 * A先摸1个，然后造成 (m + 1)(k - 1) + m + s的情况给B
 	 * 轮到B，无论B摸几个，A总能造成(m + 1)(k - 2) + m + s的情况给B
-	 * 如此往复，最后成了 m + 1 + s 给B摸，无论B摸什么，A总能 
+	 * 如此往复，最后成了 m + s 给B摸，无论B摸什么，A总能 赢。
 	 */
 	public boolean canWinNim(int n)
 	{

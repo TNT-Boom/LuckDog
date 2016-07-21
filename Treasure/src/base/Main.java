@@ -26,12 +26,13 @@ public class Main
 				put(8, "leetcode.SubOfTwoInt");
 				put(9, "leetcode.AddDigits");
 				put(10, "leetcode.NimGame");
+				put(11, "leetcode.TwoSum");
 			}
 		};
 
 		try
 		{
-			int algrithmIndex = 7;
+			int algrithmIndex = 11;
 			Class<?> algrithm = Class.forName(algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
