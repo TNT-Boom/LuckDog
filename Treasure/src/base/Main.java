@@ -16,25 +16,25 @@ public class Main
 			private static final long serialVersionUID = 1L;
 
 			{
-				put(1, "leetcode.DoubleMatrix");
-				put(2, "leetcode.Trie");
-				put(3, "leetcode.SuperPow");
-				put(4, "leetcode.GuessNum");
-				put(5, "leetcode.ReverseVowelsString");
-				put(6, "leetcode.PostordertTraversal");
-				put(7, "leetcode.FindKPairsWithSmallestSums");
-				put(8, "leetcode.SubOfTwoInt");
-				put(9, "leetcode.AddDigits");
-				put(10, "leetcode.NimGame");
-				put(11, "leetcode.TwoSum");
-				put(12, "leetcode.AddTwoNumbers");
+				put(221, "DoubleMatrix");
+				put(208, "Trie");
+				put(372, "SuperPow");
+				put(374, "GuessNum");
+				put(345, "ReverseVowelsString");
+				put(145, "PostordertTraversal");
+				put(373, "FindKPairsWithSmallestSums");
+				put(371, "SubOfTwoInt");
+				put(258, "AddDigits");
+				put(292, "NimGame");
+				put(1, "TwoSum");
+				put(2, "AddTwoNumbers");
 			}
 		};
-
+		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 12;
-			Class<?> algrithm = Class.forName(algrithmMap.get(algrithmIndex));
+			int algrithmIndex = 1;
+			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
 		}
