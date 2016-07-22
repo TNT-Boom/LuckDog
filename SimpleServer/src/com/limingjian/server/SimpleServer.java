@@ -12,7 +12,7 @@ public class SimpleServer extends Thread
 
 	public SimpleServer(Socket client)
 	{
-		System.out.println("Connected to client : " + client.getInetAddress());
+		System.out.println("Connected to client: " + client.getInetAddress());
 		this.client = client;
 	}
 
