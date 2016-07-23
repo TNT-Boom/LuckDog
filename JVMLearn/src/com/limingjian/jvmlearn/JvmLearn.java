@@ -6,7 +6,8 @@ public class JvmLearn
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-		JHeapOutMem.OutOfMem();
+		JavaVMStackOOM javaVMStackOOM = new JavaVMStackOOM();
+		javaVMStackOOM.stackLeakByThread();
 	}
 
 }
