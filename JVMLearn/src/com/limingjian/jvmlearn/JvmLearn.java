@@ -1,11 +1,13 @@
 package com.limingjian.jvmlearn;
 
+import classloadertest.SubClass;
+
 public class JvmLearn
 {
 
 	public static void main(String[] args)
 	{
-		RuntimeConstantPoolOOM.outMem();
+		System.out.println(SubClass.value);
 	}
 
 }
