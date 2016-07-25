@@ -28,12 +28,13 @@ public class Main
 				put(292, "NimGame");
 				put(1, "TwoSum");
 				put(2, "AddTwoNumbers");
+				put(310, "MHT");
 			}
 		};
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 1;
+			int algrithmIndex = 310;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
