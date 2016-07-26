@@ -29,12 +29,13 @@ public class Main
 				put(1, "TwoSum");
 				put(2, "AddTwoNumbers");
 				put(310, "MHT");
+				put(340, "ReverseString");
 			}
 		};
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 310;
+			int algrithmIndex = 340;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
