@@ -13,5 +13,6 @@ public abstract class PizzaStore
 		pizza.box();
 		return pizza;
 	}
+	// 工厂方法
 	public abstract Pizza createPizza(String type);
 }
