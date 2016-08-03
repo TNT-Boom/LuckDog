@@ -30,12 +30,13 @@ public class Main
 				put(2, "AddTwoNumbers");
 				put(310, "MHT");
 				put(340, "ReverseString");
+				put(111, "SpliteGround");
 			}
 		};
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 340;
+			int algrithmIndex = 111;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
