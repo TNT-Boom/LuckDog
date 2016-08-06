@@ -2,18 +2,19 @@ package base;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Main
 {
 
 	public static void main(String args[])
 	{	
-		Map<Integer, String> algrithmMap = new HashMap<Integer, String>()
+		Map<Integer, String> algrithmMap = new HashMap<Integer, String>() // 9开头表示非Leetcode
 		{
 			/**
 			 * serialVersionUID
 			 */
-			private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = 1L; 
 
 			{
 				put(221, "DoubleMatrix");
@@ -30,13 +31,17 @@ public class Main
 				put(2, "AddTwoNumbers");
 				put(310, "MHT");
 				put(340, "ReverseString");
-				put(111, "SpliteGround");
+				
+				
+				put(901, "SpliteGround");
+				put(902, "QuickSort");
+				put(903, "BubbleSort");
 			}
 		};
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 111;
+			int algrithmIndex = 903;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
