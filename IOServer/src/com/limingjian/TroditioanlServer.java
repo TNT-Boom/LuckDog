@@ -12,6 +12,7 @@ public class TroditioanlServer
 	public static void main(String[] args) throws IOException
 	{
 		ExecutorService executorService = Executors.newCachedThreadPool();
+		@SuppressWarnings("resource")
 		ServerSocket socket = new ServerSocket(5555);
 		System.out.println("¿ªÊ¼¼àÌýport 5555");
 		final Socket client = socket.accept(); // ×èÈûµã
