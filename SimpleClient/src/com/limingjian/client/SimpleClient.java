@@ -20,7 +20,7 @@ public class SimpleClient
 	{
 		try
 		{
-			server = new Socket(InetAddress.getLocalHost(), 5678);
+			server = new Socket(InetAddress.getLocalHost(), 5555);
 			if(server.isConnected())
 			{
 				System.out.println("Server connected...");
