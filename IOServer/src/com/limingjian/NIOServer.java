@@ -8,7 +8,6 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
-import java.util.logging.Handler;
 
 public class NIOServer
 {
@@ -91,6 +90,9 @@ public class NIOServer
 			byte[] data = buffer.array();
 			String msg = new String(data).trim();
 			System.out.println("Recv: " + msg);
+			
+			ByteBuffer back = ByteBuffer.wrap("·þÎñÆ÷»Ø¸´".getBytes());
+			client.write(back);
 		}
 		else
 		{
