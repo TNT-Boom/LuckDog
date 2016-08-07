@@ -1,4 +1,4 @@
-package com.limingjian;
+package com.limingjian.basenio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
