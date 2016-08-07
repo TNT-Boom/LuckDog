@@ -36,12 +36,14 @@ public class Main
 				put(902, "QuickSort");
 				put(903, "BubbleSort");
 				put(904, "SubStringHan");
+				
+				put(1001, "CvteTest");
 			}
 		};
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 904;
+			int algrithmIndex = 1001;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();

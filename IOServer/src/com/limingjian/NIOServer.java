@@ -75,7 +75,7 @@ public class NIOServer
 		System.out.println("Accept a client:" + client.getRemoteAddress());
 		
 		// 告诉seletor，要监听读事件。
-		client.register(selector, SelectionKey.OP_READ);
+		client.register(selector, SelectionKey.OP_READ); // 至此，Selector观察着服务端的Channel以及客户端的channel。
 	}
 	
 	private void handleReadable(SelectionKey key) throws IOException
