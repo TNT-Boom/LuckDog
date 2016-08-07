@@ -1,4 +1,4 @@
-package com.limingjian.nettyserver;
+package com.limingjian.nettyclient;
 
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
@@ -6,7 +6,7 @@ import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
 
-public class HelloHandler extends SimpleChannelHandler
+public class HiHandler extends SimpleChannelHandler
 {
 
 	@Override
@@ -49,5 +49,4 @@ public class HelloHandler extends SimpleChannelHandler
 		System.out.println("Channel closed...");
 		super.channelClosed(ctx, e);
 	}
-	
 }
