@@ -35,12 +35,13 @@ public class Main
 				put(901, "SpliteGround");
 				put(902, "QuickSort");
 				put(903, "BubbleSort");
+				put(904, "SubStringHan");
 			}
 		};
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 903;
+			int algrithmIndex = 904;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
