@@ -37,7 +37,6 @@ public class NioServerWorker extends AbstractNioSelector implements Worker
 				}
 				catch (ClosedChannelException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				

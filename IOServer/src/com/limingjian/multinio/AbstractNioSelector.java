@@ -7,8 +7,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.jboss.netty.logging.Slf4JLoggerFactory;
-
 import com.limingjian.multinio.pool.NioSelectorRunnablePool;
 
 public abstract class AbstractNioSelector implements  Runnable
@@ -70,10 +68,8 @@ public abstract class AbstractNioSelector implements  Runnable
 			try
 			{
 				wakenUp.set(false);
-				select(selector);
-				
 				processTaskQueue();
-				
+				select(selector);
 				process(selector);
 			}
 			catch (Exception e)
@@ -83,6 +79,9 @@ public abstract class AbstractNioSelector implements  Runnable
 		}
 	}
 	
+	/*
+	 * task负责像selector注册监听事件
+	 */
 	protected final void registerTask(Runnable task)
 	{
 		taskQueue.add(task);
@@ -92,6 +91,9 @@ public abstract class AbstractNioSelector implements  Runnable
 		{
 			if(wakenUp.compareAndSet(false, true)) // 如果false,置为true
 			{
+				/*
+				 * 之所以调用，是因为其应该监听的channel发生了变化，需要selector一会重新监控
+				 */
 				selector.wakeup(); // 这样可以使得加入任务后，下次调用会立即返回
 			}
 		}

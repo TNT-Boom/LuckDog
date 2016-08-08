@@ -3,11 +3,12 @@ package com.limingjian.multinio.pool;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.jboss.netty.channel.socket.nio.NioWorker;
-
 import com.limingjian.multinio.NioServerBoss;
 import com.limingjian.multinio.NioServerWorker;
 
+/*
+ * 负责管理Boss们与Worker们
+ */
 public class NioSelectorRunnablePool
 {
 	// 里面会有多个线程，用于管理Selector
