@@ -11,9 +11,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String>
 		throws Exception
 	{
 		System.out.println("Recv: " + msg);
-		ctx.channel().write("i am server");
-		
-		
+		ctx.channel().writeAndFlush("i am server");
 	}
 	
 	@Override
