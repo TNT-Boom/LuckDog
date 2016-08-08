@@ -38,12 +38,15 @@ public class Main
 				put(904, "SubStringHan");
 				
 				put(1001, "CvteTest");
+				
+				put(2001, "EncryptTestify"); // Å£¿ÍÍø
+				put(2002, "StatisticFood");
 			}
 		};
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 1001;
+			int algrithmIndex = 2001;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
