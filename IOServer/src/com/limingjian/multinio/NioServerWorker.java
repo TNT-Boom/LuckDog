@@ -65,26 +65,26 @@ public class NioServerWorker extends AbstractNioSelector implements Worker
 		
 		for(Iterator<SelectionKey> it = selectionKeys.iterator(); it.hasNext();)
 		{
-			it.remove();
 			SelectionKey key= it.next();
+			it.remove();
 			SocketChannel channel = (SocketChannel)key.channel();
 			
 			// ©ирт╤а
 			int ret = 0;
 			ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-			boolean failuer = true;
+			boolean failure = true;
 			
 			try
 			{
 				ret = channel.read(byteBuffer);
-				failuer = failuer;
+				failure = false;
 			}
 			catch(Exception e)
 			{
 				
 			}
 			
-			if(ret <= 0 || failuer)
+			if(ret <= 0 || failure)
 			{
 				key.cancel();
 				System.out.println("Client disconnected, client:" + channel.getRemoteAddress());

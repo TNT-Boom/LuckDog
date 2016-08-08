@@ -85,13 +85,14 @@ public abstract class AbstractNioSelector implements  Runnable
 	
 	protected final void registerTask(Runnable task)
 	{
+		taskQueue.add(task);
 		Selector selector = this.selector;
 		
 		if(selector != null)
 		{
 			if(wakenUp.compareAndSet(false, true)) // 如果false,置为true
 			{
-				selector.wakeup();
+				selector.wakeup(); // 这样可以使得加入任务后，下次调用会立即返回
 			}
 		}
 		else
