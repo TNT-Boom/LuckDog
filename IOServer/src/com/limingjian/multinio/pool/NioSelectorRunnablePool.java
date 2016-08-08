@@ -3,7 +3,10 @@ package com.limingjian.multinio.pool;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.jboss.netty.channel.socket.nio.NioWorker;
+
 import com.limingjian.multinio.NioServerBoss;
+import com.limingjian.multinio.NioServerWorker;
 
 public class NioSelectorRunnablePool
 {
@@ -16,7 +19,8 @@ public class NioSelectorRunnablePool
 	
 	public NioSelectorRunnablePool(Executor boss, Executor worker)
 	{
-		
+		 initBoss(boss, 1);
+		 initWorker(worker, Runtime.getRuntime().availableProcessors() * 2);
 	}
 	
 	private void initBoss(Executor boss, int count)
@@ -25,6 +29,14 @@ public class NioSelectorRunnablePool
 		for(int i = 0; i < count; i++)
 		{
 			bosses[i] = new NioServerBoss(boss, "boss thread " + i + 1, this);
+		}
+	}
+	private void initWorker(Executor worker, int count)
+	{
+		this.workers = new NioServerWorker[count];
+		for(int i = 0; i < count; ++i)
+		{
+			workers[i] = new NioServerWorker(worker, "worker thread " + i + 1, this);
 		}
 	}
 	
