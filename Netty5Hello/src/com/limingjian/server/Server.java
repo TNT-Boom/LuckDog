@@ -20,7 +20,7 @@ public class Server
 			// 设置线程池
 			serverBootstrap.group(boss, worker);
 
-			// 设置socket工厂
+			// 类似设置socket工厂
 			serverBootstrap.channel(NioServerSocketChannel.class);
 
 			serverBootstrap.childHandler(new MyChannelInitializer());
