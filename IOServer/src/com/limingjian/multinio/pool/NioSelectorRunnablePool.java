@@ -32,4 +32,9 @@ public class NioSelectorRunnablePool
 	{
 		return workers[Math.abs(workerIndex.getAndIncrement() % workers.length)];
 	}
+	
+	public Boss nextBoss()
+	{
+		return bosses[Math.abs(bossIndex.getAndIncrement() % bosses.length)];
+	}
 }
