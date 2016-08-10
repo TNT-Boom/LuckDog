@@ -36,17 +36,22 @@ public class Main
 				put(902, "QuickSort");
 				put(903, "BubbleSort");
 				put(904, "SubStringHan");
+				put(905, "tree.MinHeapMain");
+				put(906, "DPSteel");
 				
-				put(1001, "CvteTest");
+				put(1001, "CvteTest"); // CVTE笔试题
 				
 				put(2001, "EncryptTestify"); // 牛客网
 				put(2002, "StatisticFood");
+				
+				put(3001, "huawei.TailMoney"); // 华为
+				put(3002, "huawei.BigNumStr");
 			}
 		};
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 2001;
+			int algrithmIndex = 906;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
