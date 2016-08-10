@@ -18,8 +18,26 @@ public class DPSteel implements BaseAlgorithm
 		System.out.println(getMaxValue(values, 7));
 		System.out.println(getMaxValue(values, 8));
 		System.out.println(getMaxValue(values, 9));
-		System.out.println(getMaxValue(values, 10));
+		System.out.println(bottomToUp(values, 10));
 	}
+	
+	// 自底向上，数组[i] 记录的是i的结果
+	private int bottomToUp(int[] values, int totalLen)
+	{
+		int[] tempResult = new int[totalLen + 1];
+		tempResult[0] = 0;
+		for(int j = 1; j <= totalLen; j++)
+		{
+			int q = Integer.MIN_VALUE;
+			for(int i = 1; i <= j; i++)
+			{
+				q = max(q, values[i - 1] + tempResult[j - i]);// 如此不用递归，因为保证了子问题已经计算过
+			}
+			tempResult[j] = q;
+		}
+		return tempResult[totalLen];
+	}
+	
 	
 	
 	// 传统的自上而下递归，遍历了所有情况，另外额外计算了大量重复值
