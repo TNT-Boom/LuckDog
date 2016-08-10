@@ -28,7 +28,7 @@ public class DPSteel implements BaseAlgorithm
 		tempResult[0] = 0;
 		for(int j = 1; j <= totalLen; j++)
 		{
-			int q = Integer.MIN_VALUE;
+			int q = Integer.MIN_VALUE; 
 			for(int i = 1; i <= j; i++)
 			{
 				q = max(q, values[i - 1] + tempResult[j - i]);// 如此不用递归，因为保证了子问题已经计算过

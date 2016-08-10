@@ -51,7 +51,7 @@ public class Main
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 906;
+			int algrithmIndex = 3001;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
