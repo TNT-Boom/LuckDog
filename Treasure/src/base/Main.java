@@ -43,9 +43,6 @@ public class Main
 				
 				put(2001, "EncryptTestify"); // Å£¿ÍÍø
 				put(2002, "StatisticFood");
-				
-				put(3001, "huawei.TailMoney"); // »ªÎª
-				put(3002, "huawei.BigNumStr");
 			}
 		};
 		String prefix = "leetcode.";

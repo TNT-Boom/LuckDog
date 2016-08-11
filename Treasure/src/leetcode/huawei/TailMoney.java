@@ -1,21 +1,33 @@
 package leetcode.huawei;
 
+import java.util.Scanner;
+
 import base.BaseAlgorithm;
 
 public class TailMoney implements BaseAlgorithm
 {
 	public void runDemo()
 	{
+		
+	}
+
+	public static void main(String[] args)
+	{
+//		Scanner scanner = new Scanner(System.in);
+//		while(scanner.hasNext())
+//		{
+//			
+//		}
+//		scanner.close();
 		int[] input = new int[] {5,10,25,1};
 		System.out.println(countWays(input, 4, 15));
 	}
-
-	public int countWays(int[] changes, int n, int x)
+	public static int countWays(int[] changes, int n, int x)
 	{
 		return myCount(changes, n, x);
 	}
 
-	int myCount(int S[], int m, int n)
+	static int myCount(int S[], int m, int n)
 	{
 		int include, exclusive;
 		int table[][] = new int[n +1 ][m]; // table[i][j] i元钱，前j种货币，组合数
