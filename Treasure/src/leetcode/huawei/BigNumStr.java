@@ -16,7 +16,6 @@ public class BigNumStr
 
 			String n = scanner.next();
 			String m = scanner.next();
-			// ¡¾1¡¿·½·¨Ò»
 			System.out.println(addLongInteger(n, m));
 		}
 
