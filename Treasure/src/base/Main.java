@@ -8,7 +8,7 @@ public class Main
 
 	public static void main(String args[])
 	{	
-		Map<Integer, String> algrithmMap = new HashMap<Integer, String>() // 9¿ªÍ·±íÊ¾·ÇLeetcode
+		Map<Integer, String> algrithmMap = new HashMap<Integer, String>() // 9ï¿½ï¿½Í·ï¿½ï¿½Ê¾ï¿½ï¿½Leetcode
 		{
 			/**
 			 * serialVersionUID
@@ -23,7 +23,7 @@ public class Main
 				put(345, "ReverseVowelsString");
 				put(145, "PostordertTraversal");
 				put(373, "FindKPairsWithSmallestSums");
-				put(371, "SubOfTwoInt");
+				put(371, "SumOfTwoInt");
 				put(258, "AddDigits");
 				put(292, "NimGame");
 				put(1, "TwoSum");
@@ -39,16 +39,16 @@ public class Main
 				put(905, "tree.MinHeapMain");
 				put(906, "DPSteel");
 				
-				put(1001, "CvteTest"); // CVTE±ÊÊÔÌâ
+				put(1001, "CvteTest"); // CVTEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				
-				put(2001, "EncryptTestify"); // Å£¿ÍÍø
+				put(2001, "EncryptTestify"); // Å£ï¿½ï¿½ï¿½ï¿½
 				put(2002, "StatisticFood");
 			}
 		};
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 3001;
+			int algrithmIndex = 371;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
