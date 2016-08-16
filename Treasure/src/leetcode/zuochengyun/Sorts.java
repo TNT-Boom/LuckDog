@@ -237,10 +237,176 @@ public class Sorts
 				inset(heapArray, A[i], k - 1);
 			}
 		}
-		while(index < n)
+		while (index < n)
 		{
 			A[index++] = deleteMin(heapArray, k--);
 		}
 		return A;
 	}
+
+	public boolean checkDuplicate(int[] a, int n)
+	{
+		a = bubbleSort(a, n);
+		int temp = a[0];
+		for (int i = 1; i < a.length; i++)
+		{
+			if (a[i] == temp)
+				return false;
+			temp = a[i];
+		}
+		return true;
+	}
+
+	public int[] mergeAB(int[] A, int[] B, int n, int m)
+	{
+		int aIndex = n - 1;
+		int bIndex = m - 1;
+		int index = A.length - 1;
+
+		while (aIndex >= 0 && bIndex >= 0)
+		{
+			if (A[aIndex] > B[bIndex])
+				A[index--] = A[aIndex--];
+			else
+				A[index--] = B[bIndex--];
+		}
+		while (aIndex >= 0)
+			A[index--] = A[aIndex--];
+		while (bIndex >= 0)
+			A[index--] = B[bIndex--];
+
+		return A;
+	}
+
+	public int[] sortThreeColor(int[] A, int n)
+	{
+		int zeroRight = -1;
+		int twoLeft = n;
+		for (int i = 0; i < n && i > zeroRight && i < twoLeft; i++)
+		{
+			if (A[i] == 0)
+			{
+				if (i != zeroRight + 1)
+				{
+					A[i] ^= A[zeroRight + 1];
+					A[zeroRight + 1] ^= A[i];
+					A[i] ^= A[zeroRight + 1];
+				}
+				zeroRight++;
+				continue;
+			}
+			if (A[i] == 2)
+			{
+				if (i != twoLeft - 1)
+				{
+					A[i] ^= A[twoLeft - 1];
+					A[twoLeft - 1] ^= A[i];
+					A[i] ^= A[twoLeft - 1];
+				}
+				twoLeft--;
+				i--; // 重要：因为当前值还未判断过
+			}
+		}
+		return A;
+	}
+
+	public boolean findX(int[][] mat, int n, int m, int x)
+	{
+		int i = 0;
+		int j = m - 1;
+		while (i < n && j > 0)
+		{
+			if (mat[i][j] == x)
+				return true;
+			if (mat[i][j] > x)
+				j--;
+			if (mat[i][j] < x)
+				i++;
+		}
+		return false;
+	}
+
+	public int shortestSubsequence(int[] A, int n)
+	{
+		if (A == null)
+			return 0;
+		int max = A[0];
+		int min = A[n - 1];
+		int lessMaxRight = -1;
+		int biggerMinleft = n;
+		for (int i = 1; i < n; i++)
+		{
+			max = A[i] > max ? A[i] : max;
+			if (A[i] < max)
+				lessMaxRight = i;
+		}
+
+		for (int i = n - 2; i >= 0; i--)
+		{
+			min = A[i] < min ? A[i] : min;
+			if (A[i] > min)
+				biggerMinleft = i;
+		}
+
+		if (biggerMinleft == n && lessMaxRight == -1)
+			return 0;
+		if (biggerMinleft == n && lessMaxRight != -1)
+			return lessMaxRight;
+		if (biggerMinleft != n && lessMaxRight == -1)
+			return n - biggerMinleft;
+		return abs(biggerMinleft - lessMaxRight) + 1;
+	}
+
+	private int abs(int a)
+	{
+		return a > 0 ? a : -a;
+	}
+
+	public int maxGap(int[] nums,int N) {
+        if (nums == null || nums.length < 2) {
+            return 0;
+        }
+        int len = nums.length;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < len; i++) {
+            min = Math.min(min, nums[i]);
+            max = Math.max(max, nums[i]);
+        }
+        if (min == max) {
+            return 0;
+        }
+        
+        boolean[] hasNum = new boolean[len + 1]; // 是否是空桶
+        int[] maxs = new int[len + 1]; // 每个桶的最大值
+        int[] mins = new int[len + 1]; // 每个桶的最小值
+        int bid = 0;
+        for (int i = 0; i < len; i++) {
+            bid = bucket(nums[i], len, min, max); // 算出桶号
+            mins[bid] = hasNum[bid] ? Math.min(mins[bid], nums[i]) : nums[i];
+            maxs[bid] = hasNum[bid] ? Math.max(maxs[bid], nums[i]) : nums[i];
+            hasNum[bid] = true;
+        }
+        int res = 0;
+        int lastMax = 0;
+        int i = 0;
+        while (i <= len) {
+            if (hasNum[i++]) { // 找到第一个不空的桶
+                lastMax = maxs[i - 1];
+                break;
+            }
+        }
+        for (; i <= len; i++) {
+            if (hasNum[i]) {
+                res = Math.max(res, mins[i] - lastMax);
+                lastMax = maxs[i];
+            }
+        }
+        return res;
+    }
+ 
+    // 使用long类型是为了防止相乘时溢出
+    public int bucket(long num, long len, long min, long max) {
+        return (int) ((num - min) * len / (max - min));
+    }
 }
