@@ -30,7 +30,7 @@ public class Main
 				put(2, "AddTwoNumbers");
 				put(310, "MHT");
 				put(340, "ReverseString");
-				
+				put(341, "HeapSort");
 				
 				put(901, "SpliteGround");
 				put(902, "QuickSort");
@@ -48,7 +48,7 @@ public class Main
 		String prefix = "leetcode.";
 		try
 		{
-			int algrithmIndex = 371;
+			int algrithmIndex = 341;
 			Class<?> algrithm = Class.forName(prefix + algrithmMap.get(algrithmIndex));
 			BaseAlgorithm baseAlgorithm = (BaseAlgorithm)algrithm.newInstance();
 			baseAlgorithm.runDemo();
