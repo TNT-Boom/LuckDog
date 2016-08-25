@@ -1,4 +1,4 @@
-package leetcode.zuochengyun;
+package leetcode.zuochengyun.sorttopic;
 
 public class Sorts
 {
@@ -147,10 +147,10 @@ public class Sorts
 	}
 
 	// 下滤
-	private void inset(int[] heapArray, int x, int currentSize) // 数组下标从1开始算
+	private void inset(int[] heapArray, int x, int currentSize) // 数组下标�?1�?始算
 	{
 		int hole = ++currentSize;
-		for (; hole > 1 && x < heapArray[hole / 2]; hole = hole / 2) // hole向上滤
+		for (; hole > 1 && x < heapArray[hole / 2]; hole = hole / 2) // hole向上�?
 			heapArray[hole] = heapArray[hole / 2];
 		heapArray[hole] = x;
 	}
@@ -183,7 +183,7 @@ public class Sorts
 	{
 		for (int gap = n / 2; gap > 0; gap /= 2) // 对于每一个Gap
 		{
-			for (int i = gap; i < n; ++i) // 对于每一组
+			for (int i = gap; i < n; ++i) // 对于每一�?
 			{
 				int tmp = A[i];
 				int j = i;
@@ -304,7 +304,7 @@ public class Sorts
 					A[i] ^= A[twoLeft - 1];
 				}
 				twoLeft--;
-				i--; // 重要：因为当前值还未判断过
+				i--; // 重要：因为当前�?�还未判断过
 			}
 		}
 		return A;
@@ -377,9 +377,9 @@ public class Sorts
             return 0;
         }
         
-        boolean[] hasNum = new boolean[len + 1]; // 是否是空桶
-        int[] maxs = new int[len + 1]; // 每个桶的最大值
-        int[] mins = new int[len + 1]; // 每个桶的最小值
+        boolean[] hasNum = new boolean[len + 1]; // 是否是空�?
+        int[] maxs = new int[len + 1]; // 每个桶的�?大�??
+        int[] mins = new int[len + 1]; // 每个桶的�?小�??
         int bid = 0;
         for (int i = 0; i < len; i++) {
             bid = bucket(nums[i], len, min, max); // 算出桶号
@@ -391,7 +391,7 @@ public class Sorts
         int lastMax = 0;
         int i = 0;
         while (i <= len) {
-            if (hasNum[i++]) { // 找到第一个不空的桶
+            if (hasNum[i++]) { // 找到第一个不空的�?
                 lastMax = maxs[i - 1];
                 break;
             }
