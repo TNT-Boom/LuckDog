@@ -1,7 +1,5 @@
 package leetcode.huawei;
 
-import java.util.Scanner;
-
 import base.BaseAlgorithm;
 
 public class TailMoney implements BaseAlgorithm
