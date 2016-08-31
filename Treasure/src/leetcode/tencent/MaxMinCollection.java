@@ -16,8 +16,8 @@ public class MaxMinCollection
 			int[] source = new int[num];
 			for (int i = 0; i < num; i++)
 				source[i] = scanner.nextInt();
-	//		printResult(source, num);
-			getResult(source, num);
+			printResult(source, num);
+			getResult(source, num); //ÌáÊ¾³¬Ê±
 		}
 		scanner.close();
 	}
@@ -132,9 +132,9 @@ public class MaxMinCollection
 					minCount = 1;
 					min = gap;
 				}
-				else if(gap == min)
+				if(gap == min)
 					minCount++;
-				else{}
+				
 				
 				if(gap> max)
 				{
@@ -142,9 +142,8 @@ public class MaxMinCollection
 					max = gap;
 				}
 				
-				else if(gap == max)
+				if(gap == max)
 					maxCount++;
-				else{}
 			}
 			if(min < totalMin)
 			{
