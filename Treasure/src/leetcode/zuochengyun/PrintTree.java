@@ -36,54 +36,48 @@ public class PrintTree
 	}
 	private  static int[][] printTree(TreeNode root)
 	{
-		List<LinkedList<Integer>> result = new LinkedList<LinkedList<Integer>>();
-		LinkedList<Integer> currValues = new LinkedList<>();
-		// write code here
+		List<LinkedList<Integer>> results = new LinkedList<LinkedList<Integer>>();
+		LinkedList<Integer> currValues = new LinkedList<Integer>();
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
+		
 		if(root == null)
 			return null;
+		queue.add(root);
 		TreeNode last = root;
-		TreeNode nLast = root;
-		Queue<TreeNode> treeNodes = new LinkedList<>();
-		treeNodes.add(root);
-		while(treeNodes.isEmpty() == false)
+		TreeNode nlast = root;
+		while(!queue.isEmpty())
 		{
-			TreeNode outline = treeNodes.poll();
-			
-			currValues.add(outline.val);
-			
- 			if(outline.left != null)
+			TreeNode node = queue.poll();
+			currValues.add(node.val);
+			if(node.left != null)
 			{
-				treeNodes.add(outline.left);
-				nLast = outline.left;
+				queue.add(node.left);
+				nlast = node.left;
 			}
-			if(outline.right != null)
-			{
-				treeNodes.add(outline.right);
-				nLast = outline.right;
+			if(node.right != null)
+			{	
+				queue.add(node.right);
+				nlast = node.right;
 			}
 			
-			
-			if(outline == last) // 鎹㈣
+			if(last == node) // 弹出的节点等于last，则换行
 			{
-				result.add(currValues);
-				currValues = new LinkedList<Integer>();
-				last = nLast;
+				last = nlast; // last指向下一行的最后一个节点。
+				results.add(currValues);
+				currValues = new LinkedList<>();
 			}
 		}
-		
-		int[][] returnResult = new int[result.size()][];
-		int lineIndex = 0;
-		for (LinkedList<Integer> layer : result)
+		int[][] resultArr = new int[results.size()][];
+		for(int i = 0; i< results.size(); i++)
 		{
+			LinkedList<Integer> layer = results.get(i);
 			int[] eachLayer = new int[layer.size()];
-			
-			for(int i = 0; i < layer.size(); ++i)
+			for(int j = 0; j < layer.size(); j++)
 			{
-				eachLayer[i] = layer.get(i);
+				eachLayer[j] = layer.get(j);
 			}
-			returnResult[lineIndex] = eachLayer;
-			lineIndex++;
+			resultArr[i] = eachLayer;
 		}
-		return returnResult;
+		return resultArr;
 	}
 }
