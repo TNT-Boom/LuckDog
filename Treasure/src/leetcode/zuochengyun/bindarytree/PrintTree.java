@@ -1,6 +1,8 @@
 package leetcode.zuochengyun.bindarytree;
 import java.util.*;
 
+import leetcode.zuochengyun.bindarytree.CheckBalance.TreeNode;
+
 public class PrintTree
 {
 	public static class TreeNode
@@ -30,10 +32,28 @@ public class PrintTree
 		two.right = five;
 		three.right = six;
 		six.left = seven;
-		
+		boolean[] res = new boolean[1];
+		res[0] = true;
+		System.out.println(getHeight(one, res) + "" + res[0]);
  		int[][] result = printTree(one);
 		System.out.println(result);
 	}
+	
+	private static int getHeight(TreeNode root, boolean[] res)
+	{
+		if(root == null)
+			return 0;
+		int left = 0;
+		int right = 0;
+		if(root.left != null)
+			left = getHeight(root.left, res);
+		if(root.right != null)
+			right = getHeight(root.right, res);
+		if(Math.abs(left - right) > 1)
+			res[0] = false;
+		return Math.max(left, right) + 1;
+	}
+	
 	private  static int[][] printTree(TreeNode root)
 	{
 		List<LinkedList<Integer>> results = new LinkedList<LinkedList<Integer>>();
