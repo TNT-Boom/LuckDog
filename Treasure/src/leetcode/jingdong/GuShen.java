@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class GuShen
 {
 	public static void main(String[] args)
-	{
-
+	{	
+		System.out.println(hehe());
 		Scanner in = new Scanner(System.in);
 		while (in.hasNextInt())
 		{
@@ -33,5 +33,21 @@ public class GuShen
 			System.out.println(total);
 		}
 		in.close();
+	}
+	
+	@SuppressWarnings("finally")
+	public static int hehe()
+	{
+		try{
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return 2;
+		}
+		finally
+		{
+			return 3;
+		}
 	}
 }
