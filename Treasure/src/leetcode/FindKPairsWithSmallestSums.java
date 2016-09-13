@@ -28,7 +28,7 @@ public class FindKPairsWithSmallestSums implements BaseAlgorithm
 			return ret;
 		}
 		
-		int[] index = new int[nums1.length];
+		int[] index = new int[nums1.length];// 下标表示num1，值表示num2的下标
 		while(k-- > 0)
 		{
 			int minVal = Integer.MAX_VALUE;

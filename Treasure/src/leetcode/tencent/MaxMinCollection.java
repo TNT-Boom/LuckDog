@@ -26,7 +26,6 @@ public class MaxMinCollection
 	{
 		Arrays.sort(source); // 先排序，最小值一定出现在相邻的两个数之间。
 		
-		
 		if(source[0] == source[n - 1]) // 最大最小相同
 		{
 			int result = n * (n - 1) / 2;

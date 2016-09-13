@@ -10,9 +10,7 @@ public class BallsFreeDown
 	}
 	public static int calcDistance(int A, int B, int C, int D)
 	{
-
 		return getResult(A) + getResult(B) + getResult(C) + getResult(D);
-
 	}
 
 	private static int getResult(int n)

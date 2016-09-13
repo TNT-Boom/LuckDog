@@ -11,6 +11,15 @@ public class Exchange
 
 	public static void main(String[] args)
 	{
+		int a = 100;
+		System.out.println(a);
+		System.out.println(a++);
+		System.out.println(++a);
+		System.out.println(--a);
+		System.out.println(a--);
+		System.out.println(a+1);
+		System.out.println(a+=1);
+		System.out.println(a);
 		countWays(source, 4, 15);
 	}
 

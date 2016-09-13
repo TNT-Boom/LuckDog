@@ -1,7 +1,5 @@
 package leetcode.zuochengyun.dp;
 
-import javax.swing.plaf.SliderUI;
-
 /*
  * 要求连续出现的一种公共子序列
  */

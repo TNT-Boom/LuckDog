@@ -391,7 +391,7 @@ public class Sorts
         int lastMax = 0;
         int i = 0;
         while (i <= len) {
-            if (hasNum[i++]) { // 鎵惧埌绗竴涓笉绌虹殑妗?
+            if (hasNum[i++]) { // 找到第一个不空的
                 lastMax = maxs[i - 1];
                 break;
             }
@@ -405,7 +405,7 @@ public class Sorts
         return res;
     }
  
-    // 浣跨敤long绫诲瀷鏄负浜嗛槻姝㈢浉涔樻椂婧㈠嚭
+    // 使用long类型是为了防止相乘时溢出
     public int bucket(long num, long len, long min, long max) {
         return (int) ((num - min) * len / (max - min));
     }

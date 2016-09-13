@@ -5,6 +5,9 @@ import java.util.Map;
 
 import base.BaseAlgorithm;
 
+/*
+ * 一个整数数组，找出某两个数加和等于某一个特定的数（target）
+ */
 public class TwoSum implements BaseAlgorithm
 {
 	@Override
