@@ -1,5 +1,7 @@
 package leetcode.zuochengyun.bindarysearch;
 
+import java.util.Scanner;
+
 /*
  * 对于一个有序数组arr，再给定一个整数num，请在arr中找到num这个数出现的最左边的位置。
 给定一个数组arr及它的大小n，同时给定num。请返回所求位置。若该元素在数组中未出现，请返回-1。
@@ -12,7 +14,18 @@ public class LeftMostAppearance
 {
 	public static void main(String[] args)
 	{
-		System.out.println(findPos(new int[] {36, 62, 146, 208, 210, 369, 616}, 7, 616));
+		Scanner scanner = new Scanner(System.in);
+		while(scanner.hasNext())
+		{
+			int num = scanner.nextInt();
+			int n = scanner.nextInt();
+			int[] arr = new int[n];
+			for(int i = 0; i < n; i++)
+			{
+				arr[i] = scanner.nextInt();
+			}
+			System.out.println(findPos(arr, n, num));
+		}
 	}
 
 	public static int findPos(int[] arr, int n, int num)
@@ -39,6 +52,21 @@ public class LeftMostAppearance
 		}
 		if (arr[left] == num)
 			res = left;
+		else if(res == -1)
+		{
+			int i = n - 1;
+			while(i >= 0)
+			{
+				if(arr[i] < num)
+					break;
+				--i;
+			}
+			if(i == -1)
+				res= -1;
+			else {
+				res = -1 - i - 1;
+			}
+		}
 		return res;
 	}
 }
