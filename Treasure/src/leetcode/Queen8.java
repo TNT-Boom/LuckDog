@@ -26,7 +26,6 @@ public class Queen8
 				rows[cols[i] - d] = true;
 			if (cols[i] + d <= MAXQUEEN - 1)
 				rows[cols[i] + d] = true;
-
 		}
 		for (int i = 0; i < MAXQUEEN; i++)
 		{

@@ -114,7 +114,6 @@ public class Sorts
 			quickSort(array, partIndex + 1, high);
 		}
 	}
-
 	private int partion(int[] array, int low, int high)
 	{
 		int temp = array[low];
