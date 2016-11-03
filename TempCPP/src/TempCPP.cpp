@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include<CString>
+#include<stdio.h>
 using namespace std;
 struct hehe
 {
@@ -37,11 +38,16 @@ int binary_search(int* a, int len, int goal)
     //Ã»ÕÒµ½
     return -1;
 }
+static int a;
 int main()
 {
-	cout << sizeof(hehe);
-	cout << sizeof(long);
-	cout << sizeof(double);
+	static int b;
+	//int a = 0xf8000000;
+//	unsigned int b = 0x78000000;
+	//a>>=1;
+	//b>>=1;
+	printf("%8d, %8d", a,b);
+
 	return 0;
 }
 

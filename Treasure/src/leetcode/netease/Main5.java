@@ -7,14 +7,6 @@ public class Main5
 	int $abc;
 	public static void main(String[] args)
 	{
-		// t(512);
-		// t(30); // 11110 39 100111
-		// t(31); // 11111 47 101111
-		// t(22); // 10110 25 11001
-		// t(1);
-		// t(2);
-		// t(3);
-
 		Scanner in = new Scanner(System.in);
 
 		while (in.hasNext())
@@ -59,7 +51,7 @@ public class Main5
 				}
 				else
 				{
-					temp = bitArr[i];
+					temp = bitArr[i-1];
 					for (int j = i; j <= len; j++)
 					{
 						bitArr[j - 1] = bitArr[j];

@@ -1,7 +1,7 @@
 package leetcode.netease;
 
 import java.util.Scanner;
-
+// 查找 二进制1个数等于N的1的个数的值，这个值要大于N
 public class Main2
 {
 	public static void main(String[] args)
