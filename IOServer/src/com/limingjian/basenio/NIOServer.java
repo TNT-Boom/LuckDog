@@ -11,101 +11,101 @@ import java.util.Iterator;
 
 public class NIOServer
 {
-	// ÀàËÆÓÚC++ÖĞµÄselector
-	private Selector selector;
-	
-	/**
-	 * »ñµÃÒ»¸öServerSocketÍ¨µÀ£¬²¢¶Ô¸ÃÍ¨µÀ×öÒ»Ğ©³õÊ¼»¯¹¤×÷
-	 * 
-	 * @param port
-	 * @throws IOException
-	 * @see [Àà¡¢Àà#·½·¨¡¢Àà#³ÉÔ±]
-	 */
-	public void initServer(int port) throws IOException
-	{
-		ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-		
-		// ÉèÖÃ³É·Ç×èÈûµÄ
-		serverSocketChannel.configureBlocking(false);
-		serverSocketChannel.socket().bind(new InetSocketAddress(5555)); // ¸Ğ¾õÌØ±ğÀàËÆC++ÖĞµÄ×¢²áÎÄ¼şÃèÊö·û
-		this.selector = Selector.open();
-		serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT); // ÀàËÆselectÖĞÉèÖÃÄ³¸öÊÂ¼şÎÄ¼şÃèÊö·û¼¯ºÏ
-	}
-	
-	/**
-	 * Ê¹ÓÃÂÖÑ¯·½Ê½¼ì²âselectorÉÏÃæÊÇ·ñÓĞ×´Ì¬·¢Éú±ä»¯µÄsocket
-	 * <Ò»¾ä»°¹¦ÄÜ¼òÊö>
-	 * <¹¦ÄÜÏêÏ¸ÃèÊö>
-	 * @throws IOException 
-	 * @see [Àà¡¢Àà#·½·¨¡¢Àà#³ÉÔ±]
-	 */
-	public void listen() throws IOException
-	{
-		System.out.println("·şÎñÆ÷Æô¶¯³É¹¦¡£¡£¡£");
-		while(true)
-		{
-			selector.select();
-			Iterator<?> its = selector.selectedKeys().iterator();
-			while(its.hasNext())
-			{
-				SelectionKey key = (SelectionKey)(its.next());
-				its.remove();
-				handler(key);
-			}
-		}
-	}
-	
-	private void handler(SelectionKey key) throws IOException
-	{
-		if(key.isAcceptable())
-		{
-			handleAcceptable(key);
-		}
-		else if(key.isReadable())
-		{
-			handleReadable(key);
-		}
-	}
-	
-	private void handleAcceptable(SelectionKey key) throws IOException
-	{
-		ServerSocketChannel serverSocketChannel = (ServerSocketChannel)key.channel();
-		SocketChannel client = serverSocketChannel.accept(); // ¾ÍÊÇC++·â×°¿âÀïÃæaccept_timeoutÖ®ºó
-		client.configureBlocking(false); // ÉèÖÃ³É·Ç×èÈû
-		System.out.println("Accept a client:" + client.getRemoteAddress());
-		
-		// ¸æËßseletor£¬Òª¼àÌı¶ÁÊÂ¼ş¡£
-		client.register(selector, SelectionKey.OP_READ); // ÖÁ´Ë£¬Selector¹Û²ì×Å·şÎñ¶ËµÄChannelÒÔ¼°¿Í»§¶ËµÄchannel¡£
-	}
-	
-	private void handleReadable(SelectionKey key) throws IOException
-	{
-		SocketChannel client = (SocketChannel)key.channel(); // ·¢Éú±ä»¯µÄ£¬Õâ´ÎÈ¡³öÀ´¾ÍÊÇ¿Í»§¶Ë
-		System.out.println("Client state changed, Addr:" + client.getRemoteAddress());
-		ByteBuffer buffer = ByteBuffer.allocate(10);
+    // ç±»ä¼¼äºC++ä¸­çš„selector
+    private Selector selector;
 
-		int read = client.read(buffer);
-		if (read > 0)
-		{
-			byte[] data = buffer.array();
-			String msg = new String(data).trim();
-			System.out.println("Recv: " + msg);
-			
-			ByteBuffer back = ByteBuffer.wrap("·şÎñÆ÷»Ø¸´".getBytes());
-			client.write(back);
-		}
-		else
-		{
-			// ¿Í»§¶Ë·¢ËÍÊı¾İÍê±Ï£¬²¢ÇÒ¹Ø±ÕÁËsocket
-			System.out.println("Client closed, Addr: " + client.getRemoteAddress());
-			key.cancel();
-		}
-	}
-	
-	public static void main(String[] args) throws IOException
-	{
-		NIOServer server = new NIOServer();
-		server.initServer(5555);
-		server.listen(); // ²ÉÓÃwhileÑ­»·µÈ´ıSocket·¢Éú±ä»¯
-	}
+    /**
+     * è·å¾—ä¸€ä¸ªServerSocketé€šé“ï¼Œå¹¶å¯¹è¯¥é€šé“åšä¸€äº›åˆå§‹åŒ–å·¥ä½œ
+     *
+     * @param port
+     * @throws IOException
+     * @see [ç±»ã€ç±»#æ–¹æ³•ã€ç±»#æˆå‘˜]
+     */
+    public void initServer(int port) throws IOException
+    {
+        ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+
+        // è®¾ç½®æˆéé˜»å¡çš„
+        serverSocketChannel.configureBlocking(false);
+        serverSocketChannel.socket().bind(new InetSocketAddress(5555)); // æ„Ÿè§‰ç‰¹åˆ«ç±»ä¼¼C++ä¸­çš„æ³¨å†Œæ–‡ä»¶æè¿°ç¬¦
+        this.selector = Selector.open();
+        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT); // ç±»ä¼¼selectä¸­è®¾ç½®æŸä¸ªäº‹ä»¶æ–‡ä»¶æè¿°ç¬¦é›†åˆ
+    }
+
+    /**
+     * ä½¿ç”¨è½®è¯¢æ–¹å¼æ£€æµ‹selectorä¸Šé¢æ˜¯å¦æœ‰çŠ¶æ€å‘ç”Ÿå˜åŒ–çš„socket
+     * <ä¸€å¥è¯åŠŸèƒ½ç®€è¿°>
+     * <åŠŸèƒ½è¯¦ç»†æè¿°>
+     * @throws IOException
+     * @see [ç±»ã€ç±»#æ–¹æ³•ã€ç±»#æˆå‘˜]
+     */
+    public void listen() throws IOException
+    {
+        System.out.println("æœåŠ¡å™¨å¯åŠ¨æˆåŠŸã€‚ã€‚ã€‚");
+        while(true)
+        {
+            selector.select();
+            Iterator<?> its = selector.selectedKeys().iterator();
+            while(its.hasNext())
+            {
+                SelectionKey key = (SelectionKey)(its.next());
+                its.remove();
+                handler(key);
+            }
+        }
+    }
+
+    private void handler(SelectionKey key) throws IOException
+    {
+        if(key.isAcceptable())
+        {
+            handleAcceptable(key);
+        }
+        else if(key.isReadable())
+        {
+            handleReadable(key);
+        }
+    }
+
+    private void handleAcceptable(SelectionKey key) throws IOException
+    {
+        ServerSocketChannel serverSocketChannel = (ServerSocketChannel)key.channel();
+        SocketChannel client = serverSocketChannel.accept(); // å°±æ˜¯C++å°è£…åº“é‡Œé¢accept_timeoutä¹‹å
+        client.configureBlocking(false); // è®¾ç½®æˆéé˜»å¡
+        System.out.println("Accept a client:" + client.getRemoteAddress());
+
+        // å‘Šè¯‰seletorï¼Œè¦ç›‘å¬è¯»äº‹ä»¶ã€‚
+        client.register(selector, SelectionKey.OP_READ); // è‡³æ­¤ï¼ŒSelectorè§‚å¯Ÿç€æœåŠ¡ç«¯çš„Channelä»¥åŠå®¢æˆ·ç«¯çš„channelã€‚
+    }
+
+    private void handleReadable(SelectionKey key) throws IOException
+    {
+        SocketChannel client = (SocketChannel)key.channel(); // å‘ç”Ÿå˜åŒ–çš„ï¼Œè¿™æ¬¡å–å‡ºæ¥å°±æ˜¯å®¢æˆ·ç«¯
+        System.out.println("Client state changed, Addr:" + client.getRemoteAddress());
+        ByteBuffer buffer = ByteBuffer.allocate(10);
+
+        int read = client.read(buffer);
+        if (read > 0)
+        {
+            byte[] data = buffer.array();
+            String msg = new String(data).trim();
+            System.out.println("Recv: " + msg);
+
+            ByteBuffer back = ByteBuffer.wrap("æœåŠ¡å™¨å›å¤".getBytes());
+            client.write(back);
+        }
+        else
+        {
+            // å®¢æˆ·ç«¯å‘é€æ•°æ®å®Œæ¯•ï¼Œå¹¶ä¸”å…³é—­äº†socket
+            System.out.println("Client closed, Addr: " + client.getRemoteAddress());
+            key.cancel();
+        }
+    }
+
+    public static void main(String[] args) throws IOException
+    {
+        NIOServer server = new NIOServer();
+        server.initServer(5555);
+        server.listen(); // é‡‡ç”¨whileå¾ªç¯ç­‰å¾…Socketå‘ç”Ÿå˜åŒ–
+    }
 }

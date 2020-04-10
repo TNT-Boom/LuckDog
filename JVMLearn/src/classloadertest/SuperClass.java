@@ -1,15 +1,15 @@
 package classloadertest;
 
 /*
- * ±¸ÓÃÊ¹ÓÃÀà×Ö¶Î
- * Í¨¹ı×ÓÀàÒıÓÃ¸¸ÀàµÄ¾²Ì¬×Ö¶Î£¬²»»áµ¼ÖÂ×ÓÀà³õÊ¼»¯
+ * å¤‡ç”¨ä½¿ç”¨ç±»å­—æ®µ
+ * é€šè¿‡å­ç±»å¼•ç”¨çˆ¶ç±»çš„é™æ€å­—æ®µï¼Œä¸ä¼šå¯¼è‡´å­ç±»åˆå§‹åŒ–
  */
 public class SuperClass
 {
-	static
-	{
-		System.out.println("SuperClass init!");
-	}
-	
-	public static int value = 123;
+    static
+    {
+        System.out.println("SuperClass init!");
+    }
+
+    public static int value = 123;
 }

@@ -2,11 +2,11 @@ package classloadertest;
 
 public class SubClass extends SuperClass
 {
-	/*
-	 * main调用 SubClass.value属于被动引用，因此该子类不会被初始化
-	 */
-	static
-	{
-		System.out.println("SubClass init");
-	}
+    /*
+     * main璋冪敤 SubClass.value灞炰簬琚姩寮曠敤锛屽洜姝よ瀛愮被涓嶄細琚垵濮嬪寲
+     */
+    static
+    {
+        System.out.println("SubClass init");
+    }
 }

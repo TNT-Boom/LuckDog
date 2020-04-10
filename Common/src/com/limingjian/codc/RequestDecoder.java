@@ -8,19 +8,19 @@ import org.jboss.netty.handler.codec.frame.FrameDecoder;
 import com.limingjian.global.ConstantValue;
 import com.limingjian.model.Request;
 
-public class RequestDecoder extends FrameDecoder // FrameDecoder¿ÉÒÔĞ­ÖúÎÒÃÇ½â¾öÕ³°ü·Ö°üÎÊÌâ
+public class RequestDecoder extends FrameDecoder // FrameDecoderå¯ä»¥ååŠ©æˆ‘ä»¬è§£å†³ç²˜åŒ…åˆ†åŒ…é—®é¢˜
 {
 
 	@Override
 	protected Object decode(ChannelHandlerContext ctx, Channel channel, ChannelBuffer buffer)
 		throws Exception
 	{
-		if (buffer.readableBytes() >= ConstantValue.BASE_LENTH) // ³¤¶È±ØĞë´óÓÚ»ù±¾³¤¶È
+		if (buffer.readableBytes() >= ConstantValue.BASE_LENTH) // é•¿åº¦å¿…é¡»å¤§äºåŸºæœ¬é•¿åº¦
 		{
-			int readerIndex = buffer.readerIndex(); // ¼ÇÂ¼°üÍ·¿ªÊ¼µÄ¶ÁÖ¸ÕëÎ»ÖÃ
+			int readerIndex = buffer.readerIndex(); // è®°å½•åŒ…å¤´å¼€å§‹çš„è¯»æŒ‡é’ˆä½ç½®
 
 			Request request = new Request();
-			while (true) // Ò»Ö±ÕÒ°üÍ·
+			while (true) // ä¸€ç›´æ‰¾åŒ…å¤´
 			{
 				if (buffer.readInt() == ConstantValue.FLAG)
 				{
@@ -31,12 +31,12 @@ public class RequestDecoder extends FrameDecoder // FrameDecoder¿ÉÒÔĞ­ÖúÎÒÃÇ½â¾ö
 			short moudle = buffer.readShort();
 			short cmd = buffer.readShort();
 			int dataLen = buffer.readInt();
-			// ÓĞ¿ÉÄÜÊı¾İ²»È«
+			// æœ‰å¯èƒ½æ•°æ®ä¸å…¨
 
-			if (buffer.readableBytes() < dataLen) // ´ËÊ±ÒÑ¾­¶ÁÈ¡ÁË£¬È»¶øÓÖÃ»ÓĞÓÃµ½£¬ËùÒÔĞèÒª»¹Ô­BUFFER
+			if (buffer.readableBytes() < dataLen) // æ­¤æ—¶å·²ç»è¯»å–äº†ï¼Œç„¶è€Œåˆæ²¡æœ‰ç”¨åˆ°ï¼Œæ‰€ä»¥éœ€è¦è¿˜åŸBUFFER
 			{
 				buffer.readerIndex(readerIndex);
-				return null; // µÈ´ıÊı¾İ°ü
+				return null; // ç­‰å¾…æ•°æ®åŒ…
 			}
 
 			byte[] data = new byte[dataLen];
@@ -45,12 +45,12 @@ public class RequestDecoder extends FrameDecoder // FrameDecoder¿ÉÒÔĞ­ÖúÎÒÃÇ½â¾ö
 			request.setCmd(cmd);
 			request.setData(data);
 			
-			// ¼ÌĞøÍùÏÂ´«µİ£¬ÆäÊµ×îÖÕµ÷ÓÃµÄÊÇsendUpStream
+			// ç»§ç»­å¾€ä¸‹ä¼ é€’ï¼Œå…¶å®æœ€ç»ˆè°ƒç”¨çš„æ˜¯sendUpStream
 			return request;
 		}
 
-		// Êı¾İ°ü²»ÍêÕû
-		return null; // ±íÊ¾µÈ´ıÊı¾İ°ü
+		// æ•°æ®åŒ…ä¸å®Œæ•´
+		return null; // è¡¨ç¤ºç­‰å¾…æ•°æ®åŒ…
 	}
 
 }
