@@ -1,34 +1,29 @@
 package com.limingjian.multinio;
 
-import java.net.SocketAddress;
-import java.nio.channels.ServerSocketChannel;
-
 import com.limingjian.multinio.pool.Boss;
 import com.limingjian.multinio.pool.NioSelectorRunnablePool;
 
-// ¿‡À∆netty÷–µƒ∑˛ŒÒ¿‡
-public class NioServerBootstrap
-{
-	private NioSelectorRunnablePool selectorRunnablePool;
-	
-	public NioServerBootstrap(NioSelectorRunnablePool nioSelectorRunnablePool)
-	{
-		this.selectorRunnablePool = nioSelectorRunnablePool;
-	}
-	
-	public void bind(final SocketAddress localAddress)
-	{
-		try
-		{
-			ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-			serverSocketChannel.configureBlocking(false);
-			serverSocketChannel.socket().bind(localAddress);
-			
-			// ªÒ»°Bossœﬂ≥Ã
-			Boss nextBoss = selectorRunnablePool.nextBoss();
-			nextBoss.registerAcceptChannelTask(serverSocketChannel);
-		}
-		catch(Exception e)
-		{}
-	}
+import java.net.SocketAddress;
+import java.nio.channels.ServerSocketChannel;
+
+// Á±ª‰ººnetty‰∏≠ÁöÑÊúçÂä°Á±ª
+public class NioServerBootstrap {
+    private NioSelectorRunnablePool selectorRunnablePool;
+
+    public NioServerBootstrap(NioSelectorRunnablePool nioSelectorRunnablePool) {
+        this.selectorRunnablePool = nioSelectorRunnablePool;
+    }
+
+    public void bind(final SocketAddress localAddress) {
+        try {
+            ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+            serverSocketChannel.configureBlocking(false);
+            serverSocketChannel.socket().bind(localAddress);
+
+            // Ëé∑ÂèñBossÁ∫øÁ®ã
+            Boss nextBoss = selectorRunnablePool.nextBoss();
+            nextBoss.registerAcceptChannelTask(serverSocketChannel);
+        } catch (Exception e) {
+        }
+    }
 }

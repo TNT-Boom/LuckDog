@@ -1,5 +1,7 @@
 package com.limingjian.multinio;
 
+import com.limingjian.multinio.pool.NioSelectorRunnablePool;
+
 import java.io.IOException;
 import java.nio.channels.Selector;
 import java.util.Queue;
@@ -7,117 +9,100 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import com.limingjian.multinio.pool.NioSelectorRunnablePool;
+public abstract class AbstractNioSelector implements Runnable {
+    /**
+     * çº¿ç¨‹æ± 
+     */
+    private final Executor executor;
 
-public abstract class AbstractNioSelector implements  Runnable
-{
-	/**
-	 * Ïß³Ì³Ø
-	 */
-	private final Executor executor;
-	
-	/**
-	 * Ñ¡ÔñÆ÷
-	 */
-	protected Selector selector;
-	
-	/*
-	 * »½ĞÑ±ê¼Ç
-	 */
-	protected final AtomicBoolean wakenUp = new AtomicBoolean();
-	
-	/*
-	 * ÈÎÎñ¶ÓÁĞ
-	 */
-	private final Queue<Runnable> taskQueue = new ConcurrentLinkedQueue<>();
-	
-	private String threadName;
-	
-	/*
-	 * Ïß³Ì¹ÜÀí¶ÔÏó
-	 */
-	protected NioSelectorRunnablePool selectorRunnablePool;
-	
-	public AbstractNioSelector(Executor executor, String threadName, NioSelectorRunnablePool nioSelectorRunnablePool)
-	{
-		this.executor = executor;
-		this.threadName = threadName;
-		this.selectorRunnablePool = nioSelectorRunnablePool;
-		openSelector();
-	}
-	
-	private void openSelector()
-	{
-		try
-		{
-			this.selector = Selector.open();
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		executor.execute(this); // »áÖ´ĞĞ×Ô¼ºµÄrun
-	}
-	
-	public void run()
-	{
-		Thread.currentThread().setName(threadName);
-		while(true)
-		{
-			try
-			{
-				wakenUp.set(false);
-				processTaskQueue();
-				select(selector);
-				process(selector);
-			}
-			catch (Exception e)
-			{
-				
-			}
-		}
-	}
-	
-	/*
-	 * task¸ºÔğÏñselector×¢²á¼àÌıÊÂ¼ş
-	 */
-	protected final void registerTask(Runnable task)
-	{
-		taskQueue.add(task);
-		Selector selector = this.selector;
-		
-		if(selector != null)
-		{
-			if(wakenUp.compareAndSet(false, true)) // Èç¹ûfalse,ÖÃÎªtrue
-			{
-				/*
-				 * Ö®ËùÒÔµ÷ÓÃ£¬ÊÇÒòÎªÆäÓ¦¸Ã¼àÌıµÄchannel·¢ÉúÁË±ä»¯£¬ĞèÒªselectorÒ»»áÖØĞÂ¼à¿Ø
-				 */
-				selector.wakeup(); // ÕâÑù¿ÉÒÔÊ¹µÃ¼ÓÈëÈÎÎñºó£¬ÏÂ´Îµ÷ÓÃ»áÁ¢¼´·µ»Ø
-			}
-		}
-		else
-		{
-			taskQueue.remove(task);
-		}
-	}
-	
-	private void processTaskQueue()
-	{
-		for(;;)
-		{
-			final Runnable task = taskQueue.poll();
-			if(task == null)
-				break;
-			task.run();
-		}
-	}
-	public NioSelectorRunnablePool getNioSelectorRunnablePool()
-	{
-		return selectorRunnablePool;
-	}
-	protected abstract int select(Selector selector) throws IOException; // ¹¤³§·½·¨Ä£Ê½£¬ÓÉ×ÓÀà¾ö¶¨
-	
-	protected abstract void process(Selector selector) throws IOException;
+    /**
+     * é€‰æ‹©å™¨
+     */
+    protected Selector selector;
+
+    /*
+     * å”¤é†’æ ‡è®°
+     */
+    protected final AtomicBoolean wakenUp = new AtomicBoolean();
+
+    /*
+     * ä»»åŠ¡é˜Ÿåˆ—
+     */
+    private final Queue<Runnable> taskQueue = new ConcurrentLinkedQueue<>();
+
+    private String threadName;
+
+    /*
+     * çº¿ç¨‹ç®¡ç†å¯¹è±¡
+     */
+    protected NioSelectorRunnablePool selectorRunnablePool;
+
+    public AbstractNioSelector(Executor executor, String threadName, NioSelectorRunnablePool nioSelectorRunnablePool) {
+        this.executor = executor;
+        this.threadName = threadName;
+        this.selectorRunnablePool = nioSelectorRunnablePool;
+        openSelector();
+    }
+
+    private void openSelector() {
+        try {
+            this.selector = Selector.open();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        executor.execute(this); // ä¼šæ‰§è¡Œè‡ªå·±çš„run
+    }
+
+    public void run() {
+        Thread.currentThread().setName(threadName);
+        while (true) {
+            try {
+                wakenUp.set(false);
+                processTaskQueue();
+                select(selector);
+                process(selector);
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+    /*
+     * taskè´Ÿè´£åƒselectoræ³¨å†Œç›‘å¬äº‹ä»¶
+     */
+    protected final void registerTask(Runnable task) {
+        taskQueue.add(task);
+        Selector selector = this.selector;
+
+        if (selector != null) {
+            if (wakenUp.compareAndSet(false, true)) // å¦‚æœfalse,ç½®ä¸ºtrue
+            {
+                /*
+                 * ä¹‹æ‰€ä»¥è°ƒç”¨ï¼Œæ˜¯å› ä¸ºå…¶åº”è¯¥ç›‘å¬çš„channelå‘ç”Ÿäº†å˜åŒ–ï¼Œéœ€è¦selectorä¸€ä¼šé‡æ–°ç›‘æ§
+                 */
+                selector.wakeup(); // è¿™æ ·å¯ä»¥ä½¿å¾—åŠ å…¥ä»»åŠ¡åï¼Œä¸‹æ¬¡è°ƒç”¨ä¼šç«‹å³è¿”å›
+            }
+        } else {
+            taskQueue.remove(task);
+        }
+    }
+
+    private void processTaskQueue() {
+        for (; ; ) {
+            final Runnable task = taskQueue.poll();
+            if (task == null) {
+                break;
+            }
+            task.run();
+        }
+    }
+
+    public NioSelectorRunnablePool getNioSelectorRunnablePool() {
+        return selectorRunnablePool;
+    }
+
+    protected abstract int select(Selector selector) throws IOException; // å·¥å‚æ–¹æ³•æ¨¡å¼ï¼Œç”±å­ç±»å†³å®š
+
+    protected abstract void process(Selector selector) throws IOException;
 }

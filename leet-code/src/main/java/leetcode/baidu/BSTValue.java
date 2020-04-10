@@ -1,109 +1,97 @@
 package leetcode.baidu;
 
-// ¶þ²æ²éÕÒÊ÷µÄ×îÐ¡Â·¾¶Öµ¡£
-public class BSTValue
-{
-	public static void main(String[] args)
-	{
+// äºŒå‰æŸ¥æ‰¾æ ‘çš„æœ€å°è·¯å¾„å€¼ã€‚
+public class BSTValue {
+    public static void main(String[] args) {
 
-		/*
-		 * root£º tNodeRoot one layer: tNode21 tNode22 two layer£ºtNode11 tNode12 tNode13 tNode14
-		 */
+        /*
+         * rootï¼š tNodeRoot one layer: tNode21 tNode22 two layerï¼štNode11 tNode12 tNode13 tNode14
+         */
 
-		// ¹¹ÔìÒ»¸öBSTÊ÷
-		TreeNode tNode11 = new TreeNode(10, null, null);
-		TreeNode tNode12 = new TreeNode(50, null, null);
-		TreeNode tNode13 = new TreeNode(5, null, null);
-		TreeNode tNode14 = new TreeNode(30, null, null);
+        // æž„é€ ä¸€ä¸ªBSTæ ‘
+        TreeNode tNode11 = new TreeNode(10, null, null);
+        TreeNode tNode12 = new TreeNode(50, null, null);
+        TreeNode tNode13 = new TreeNode(5, null, null);
+        TreeNode tNode14 = new TreeNode(30, null, null);
 
-		TreeNode tNode21 = new TreeNode(30, tNode11, tNode12);
-		TreeNode tNode22 = new TreeNode(30, tNode13, tNode14);
+        TreeNode tNode21 = new TreeNode(30, tNode11, tNode12);
+        TreeNode tNode22 = new TreeNode(30, tNode13, tNode14);
 
-		TreeNode tNodeRoot = new TreeNode(100, tNode21, tNode22);
+        TreeNode tNodeRoot = new TreeNode(100, tNode21, tNode22);
 
-		System.out.println(minlength(tNodeRoot));
+        System.out.println(minlength(tNodeRoot));
 
-	}
+    }
 
-	/**
-	 * »ñÈ¡BSTÊ÷µÄ×î¶ÌÂ·¾¶
-	 * 
-	 * @param tNode
-	 * @return minLength£ºBST×î¶ÌÂ·¾¶
-	 */
-	private static int minlength(TreeNode tNode)
-	{
-		// TODO Auto-generated method stub
-		if (tNode != null)
-		{
-			return getMinPath(tNode, 0);
-		}
-		return -1;
-	}
+    /**
+     * èŽ·å–BSTæ ‘çš„æœ€çŸ­è·¯å¾„
+     *
+     * @param tNode
+     * @return minLengthï¼šBSTæœ€çŸ­è·¯å¾„
+     */
+    private static int minlength(TreeNode tNode) {
+        // TODO Auto-generated method stub
+        if (tNode != null) {
+            return getMinPath(tNode, 0);
+        }
+        return -1;
+    }
 
-	/**
-	 * µÝ¹é»ñÈ¡·Ç¿Õ¸ù½Úµãµ½Ò¶×Ó½ÚµãµÄ×î¶ÌÂ·¾¶
-	 * 
-	 * @param node
-	 * @param currVal
-	 * @return minLeft>minRight? minRight:minLeft
-	 */
-	private static int getMinPath(TreeNode node, int currVal)
-	{
-		int leftPath = -1;
-		int rightPath = -1;
+    /**
+     * é€’å½’èŽ·å–éžç©ºæ ¹èŠ‚ç‚¹åˆ°å¶å­èŠ‚ç‚¹çš„æœ€çŸ­è·¯å¾„
+     *
+     * @param node
+     * @param currVal
+     * @return minLeft>minRight? minRight:minLeft
+     */
+    private static int getMinPath(TreeNode node, int currVal) {
+        int leftPath = -1;
+        int rightPath = -1;
 
-		// ÓÒ×ÓÊ÷
-		if (node.rightNode != null)
-		{
-			rightPath = getMinPath(node.rightNode, currVal + node.value);
-		}
+        // å³å­æ ‘
+        if (node.rightNode != null) {
+            rightPath = getMinPath(node.rightNode, currVal + node.value);
+        }
 
-		// ×ó×ÓÊ÷
-		if (node.leftNode != null)
-		{
-			leftPath = getMinPath(node.leftNode, currVal + node.value);
-		}
+        // å·¦å­æ ‘
+        if (node.leftNode != null) {
+            leftPath = getMinPath(node.leftNode, currVal + node.value);
+        }
 
-		// Ò¶×Ó½Úµã
-		if (node.leftNode == null && node.rightNode == null)
-		{
-			return currVal + node.value;
-		}
+        // å¶å­èŠ‚ç‚¹
+        if (node.leftNode == null && node.rightNode == null) {
+            return currVal + node.value;
+        }
 
-		// Èç¹ûÓÒ×ÓÊ÷Îª¿Õ
-		if (node.rightNode == null)
-		{
-			return leftPath;
-		}
+        // å¦‚æžœå³å­æ ‘ä¸ºç©º
+        if (node.rightNode == null) {
+            return leftPath;
+        }
 
-		// Èç¹û×ó×ÓÊ÷Îª¿Õ
-		if (node.leftNode == null)
-		{
-			return rightPath;
-		}
+        // å¦‚æžœå·¦å­æ ‘ä¸ºç©º
+        if (node.leftNode == null) {
+            return rightPath;
+        }
 
-		// Èç¹ûÓÒ×ÓÊ÷ºÍ×ó×ÓÊ÷¶¼²»Îª¿Õ
-		return leftPath > rightPath ? rightPath : leftPath;
-	}
+        // å¦‚æžœå³å­æ ‘å’Œå·¦å­æ ‘éƒ½ä¸ä¸ºç©º
+        return leftPath > rightPath ? rightPath : leftPath;
+    }
 }
 
 /**
- * ¶¨ÒåBSTÊ÷½á¹¹ÀàÐÍ
- * 
+ * å®šä¹‰BSTæ ‘ç»“æž„ç±»åž‹
+ *
  * @author ZhuXY
  *
  */
-class TreeNode
-{
-	int value;
-	TreeNode leftNode;
-	TreeNode rightNode;
+class TreeNode {
+    int value;
+    TreeNode leftNode;
+    TreeNode rightNode;
 
-	TreeNode(int value, TreeNode lefeNode, TreeNode rightNode)
-	{
-		this.value = value;
-		this.leftNode = lefeNode;
-		this.rightNode = rightNode;
-	}
+    TreeNode(int value, TreeNode lefeNode, TreeNode rightNode) {
+        this.value = value;
+        this.leftNode = lefeNode;
+        this.rightNode = rightNode;
+    }
 }

@@ -3,73 +3,64 @@ package com.limingjian.model;
 /*
  * 返回对象
  */
-public class Response
-{
-	/*
-	 * 请求模块
-	 */
-	private short module;
-	
-	/*
-	 * 模块之外的命令号
-	 */
-	private short cmd;
-	
-	/*
-	 * 状态码
-	 */
-	private int stateCode;
-	
-	/*
-	 * 数据部分
-	 */
-	private byte[] data;
+public class Response {
+    /*
+     * 请求模块
+     */
+    private short module;
 
-	public byte[] getData()
-	{
-		return data;
-	}
+    /*
+     * 模块之外的命令号
+     */
+    private short cmd;
 
-	public void setData(byte[] data)
-	{
-		this.data = data;
-	}
+    /*
+     * 状态码
+     */
+    private int stateCode;
 
-	public short getCmd()
-	{
-		return cmd;
-	}
+    /*
+     * 数据部分
+     */
+    private byte[] data;
 
-	public void setCmd(short cmd)
-	{
-		this.cmd = cmd;
-	}
+    public byte[] getData() {
+        return data;
+    }
 
-	public short getModule()
-	{
-		return module;
-	}
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 
-	public void setModule(short module)
-	{
-		this.module = module;
-	}
-	
-	public int getDataLen()
-	{
-		if(data != null)
-			return data.length;
-		else
-			return 0;
-	}
+    public short getCmd() {
+        return cmd;
+    }
 
-	public int getStateCode()
-	{
-		return stateCode;
-	}
+    public void setCmd(short cmd) {
+        this.cmd = cmd;
+    }
 
-	public void setStateCode(int stateCode)
-	{
-		this.stateCode = stateCode;
-	}
+    public short getModule() {
+        return module;
+    }
+
+    public void setModule(short module) {
+        this.module = module;
+    }
+
+    public int getDataLen() {
+        if (data != null) {
+            return data.length;
+        } else {
+            return 0;
+        }
+    }
+
+    public int getStateCode() {
+        return stateCode;
+    }
+
+    public void setStateCode(int stateCode) {
+        this.stateCode = stateCode;
+    }
 }

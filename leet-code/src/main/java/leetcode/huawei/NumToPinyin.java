@@ -2,79 +2,67 @@ package leetcode.huawei;
 
 import java.util.Stack;
 
-public class NumToPinyin
-{
-	public static void main(String[] args)
-	{
-		getPinyin(10301);
-		getPinyin(10301);
-		getPinyin(1010);
-		getPinyin(103);
-		getPinyin(100);
-	}
+public class NumToPinyin {
+    public static void main(String[] args) {
+        getPinyin(10301);
+        getPinyin(10301);
+        getPinyin(1010);
+        getPinyin(103);
+        getPinyin(100);
+    }
 
-	private static void getPinyin(int num)
-	{
-		String[] one = new String[] {"", "Ê®", "°Ù", "Ç§"};
-		String[] two = new String[] {"", "Íò", "ÒÚ"};
-		int currPos = 0;
-		int oneIndex = 0;
-		int twoIndex = 0;
-		Stack<String> result = new Stack<>();
-		do
-		{
-			if(oneIndex == 4)
-			{
-				result.push(two[twoIndex]);
-				
-			}
-			oneIndex %= 4;
-			twoIndex %= 3;
-			
-			if (num % 10 == 0)
-			{
-				if (currPos == 0) // Èç¹û×îºóÒ»Î»ÊÇ0£¬Ôò²»¶Á
-				{
-					
-				}
-				
-				// Èç¹ûµ±Ç°== 0£¬Ç°Ò»¸öÒ²Îª0£»ÇÒ²»µ½Íò ÒÚÔò²»Ñ¹Èë0
-				else if(result.isEmpty() || result.peek().equals("0"))
-				{
-					
-				}
-				else 
-				{
-					result.push(num % 10 + "");
-				}
-				num /= 10;
-				++currPos;
-				++oneIndex;
-				if (oneIndex == 4)
-				{
-					++twoIndex;
-				}
-				continue;
-			}
-			
-			result.push(one[oneIndex] + "");
-			result.push(num % 10 + "");
-			currPos++;
-			++oneIndex;
-			if (oneIndex == 4)
-			{
-				++twoIndex;
-			}
-			num /= 10;
-			
+    private static void getPinyin(int num) {
+        String[] one = new String[]{"", "å", "ç™¾", "åƒ"};
+        String[] two = new String[]{"", "ä¸‡", "äº¿"};
+        int currPos = 0;
+        int oneIndex = 0;
+        int twoIndex = 0;
+        Stack<String> result = new Stack<>();
+        do {
+            if (oneIndex == 4) {
+                result.push(two[twoIndex]);
 
-		} while (num != 0);
-		
-		StringBuilder builder = new StringBuilder();
-		while(!result.isEmpty())
-		{
-			builder.append(result.pop());
-		}
-		System.out.println(builder.toString());
-	}
+            }
+            oneIndex %= 4;
+            twoIndex %= 3;
+
+            if (num % 10 == 0) {
+                if (currPos == 0) // å¦‚æœæœ€åä¸€ä½æ˜¯0ï¼Œåˆ™ä¸è¯»
+                {
+
+                }
+
+                // å¦‚æœå½“å‰== 0ï¼Œå‰ä¸€ä¸ªä¹Ÿä¸º0ï¼›ä¸”ä¸åˆ°ä¸‡ äº¿åˆ™ä¸å‹å…¥0
+                else if (result.isEmpty() || result.peek().equals("0")) {
+
+                } else {
+                    result.push(num % 10 + "");
+                }
+                num /= 10;
+                ++currPos;
+                ++oneIndex;
+                if (oneIndex == 4) {
+                    ++twoIndex;
+                }
+                continue;
+            }
+
+            result.push(one[oneIndex] + "");
+            result.push(num % 10 + "");
+            currPos++;
+            ++oneIndex;
+            if (oneIndex == 4) {
+                ++twoIndex;
+            }
+            num /= 10;
+
+
+        } while (num != 0);
+
+        StringBuilder builder = new StringBuilder();
+        while (!result.isEmpty()) {
+            builder.append(result.pop());
+        }
+        System.out.println(builder.toString());
+    }
 }

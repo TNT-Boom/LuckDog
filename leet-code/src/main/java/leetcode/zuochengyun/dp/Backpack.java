@@ -9,33 +9,28 @@ package leetcode.zuochengyun.dp;
 [1,2,3],[1,2,3],3,6
 返回：6
  */
-public class Backpack
-{
-	public static void main(String[] args)
-	{
-		int[] w = new int[]{1,2,3};
-		int[] v = new int[]{1,2,3};
-		System.out.println(maxValue(w,v,3,6));
-	}
-	public static int maxValue(int[] w, int[] v, int n, int cap)
-	{
-		int[][] result = new int[n + 1][cap + 1]; // 表示 前i件物品不超过重量Y的最大价值
-		for(int i= 1; i <= n; i++)
-		{
-			for(int j = 1; j <= cap; j++)
-			{
-				if(i == 1 && v[i - 1] <= j)
-				{
-					result[i][j] = v[i - 1];
-					continue;
-				}
-				int excludeI = result[i -1][j];
-				
-				int includeI = j - w[i - 1] >= 0 ? result[i - 1][j - w[i -1]] + v[i - 1] : 0;
-				result[i][j] = excludeI > includeI ? excludeI : includeI;
-				
-			}
-		}
-		return result[n][cap];
-	}
+public class Backpack {
+    public static void main(String[] args) {
+        int[] w = new int[]{1, 2, 3};
+        int[] v = new int[]{1, 2, 3};
+        System.out.println(maxValue(w, v, 3, 6));
+    }
+
+    public static int maxValue(int[] w, int[] v, int n, int cap) {
+        int[][] result = new int[n + 1][cap + 1]; // 表示 前i件物品不超过重量Y的最大价值
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= cap; j++) {
+                if (i == 1 && v[i - 1] <= j) {
+                    result[i][j] = v[i - 1];
+                    continue;
+                }
+                int excludeI = result[i - 1][j];
+
+                int includeI = j - w[i - 1] >= 0 ? result[i - 1][j - w[i - 1]] + v[i - 1] : 0;
+                result[i][j] = excludeI > includeI ? excludeI : includeI;
+
+            }
+        }
+        return result[n][cap];
+    }
 }

@@ -1,17 +1,19 @@
 package com.limingjian.jvmlearn;
 
 /*
- * 测试虚拟机栈与本地方法栈溢出
- * 参数 -Xss128k
- * 抛L stackoverflow 异常
+ *
  */
-public class JVMStackTest
-{
-	private int stackLength = 1;
-	
-	public void stackLeak()
-	{
-		++stackLength;
-		stackLeak();
-	}
+
+/**
+ * 娴嬭瘯铏氭嫙鏈烘爤涓庢湰鍦版柟娉曟爤婧㈠嚭
+ *  鍙傛暟 -Xss128k
+ *  鎶汱 stackoverflow 寮傚父
+ */
+public class JVMStackTest {
+    private int stackLength = 1;
+
+    public void stackLeak() {
+        ++stackLength;
+        stackLeak();
+    }
 }

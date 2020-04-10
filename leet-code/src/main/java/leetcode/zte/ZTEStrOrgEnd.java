@@ -2,60 +2,50 @@ package leetcode.zte;
 
 import java.util.Arrays;
 
-public class ZTEStrOrgEnd
-{
-	static boolean flag = false;
-	public static void main(String[] args)
-	{
-		// TODO Auto-generated method stub
-		// String [] str = {"ad","dg","gj","jl"};
-		String[] str = {"abc", "cde", "efg", "klm"};
-		// System.out.println(judge("aa", "dd"));
-		fun(str, 0);
-		System.out.println(flag);
-	}
+public class ZTEStrOrgEnd {
+    static boolean flag = false;
 
-	public static void fun(String[] str, int k)
-	{
-		if (k == str.length)
-		{
-			flag = true;
-			System.out.println(Arrays.toString(str));
-			return;
-		}
-		for (int i = k; i < str.length; ++i)
-		{
-			// ½»»»k+1ºÍi
-			// k=0,±íÃ÷ÎªµÚÒ»¸ö×Ö·û´®£¬±ØÐëºÍ×Ô¼ºÒÔ¼°ºóÃæÃ¿Ò»¸ö½»»»
-			// k>0Ê±£¬¼ÙÉè0-(k-1)ÊÇÅÅÐòºÃµÄ£¬ÎÒÃÇÐè±È½Ïk-1ºÍiµÄË³Ðò
-			if (k > 0 && judge(str[k - 1], str[i]))
-			{
-				swap(str, k, i);
-				fun(str, k + 1);
-				swap(str, k, i);
-			}
-			else if (k == 0)
-			{
-				swap(str, k, i);
-				fun(str, k + 1);
-				swap(str, k, i);
-			}
-		}
-	}
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        // String [] str = {"ad","dg","gj","jl"};
+        String[] str = {"abc", "cde", "efg", "klm"};
+        // System.out.println(judge("aa", "dd"));
+        fun(str, 0);
+        System.out.println(flag);
+    }
 
-	private static void swap(String[] a, int s, int i)
-	{
-		String t = a[s];
-		a[s] = a[i];
-		a[i] = t;
-	}
+    public static void fun(String[] str, int k) {
+        if (k == str.length) {
+            flag = true;
+            System.out.println(Arrays.toString(str));
+            return;
+        }
+        for (int i = k; i < str.length; ++i) {
+            // äº¤æ¢k+1å’Œi
+            // k=0,è¡¨æ˜Žä¸ºç¬¬ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå¿…é¡»å’Œè‡ªå·±ä»¥åŠåŽé¢æ¯ä¸€ä¸ªäº¤æ¢
+            // k>0æ—¶ï¼Œå‡è®¾0-(k-1)æ˜¯æŽ’åºå¥½çš„ï¼Œæˆ‘ä»¬éœ€æ¯”è¾ƒk-1å’Œiçš„é¡ºåº
+            if (k > 0 && judge(str[k - 1], str[i])) {
+                swap(str, k, i);
+                fun(str, k + 1);
+                swap(str, k, i);
+            } else if (k == 0) {
+                swap(str, k, i);
+                fun(str, k + 1);
+                swap(str, k, i);
+            }
+        }
+    }
 
-	public static boolean judge(String s1, String s2)
-	{
-		if (s1.charAt(s1.length() - 1) == s2.charAt(0))
-		{
-			return true;
-		}
-		return false;
-	}
+    private static void swap(String[] a, int s, int i) {
+        String t = a[s];
+        a[s] = a[i];
+        a[i] = t;
+    }
+
+    public static boolean judge(String s1, String s2) {
+        if (s1.charAt(s1.length() - 1) == s2.charAt(0)) {
+            return true;
+        }
+        return false;
+    }
 }

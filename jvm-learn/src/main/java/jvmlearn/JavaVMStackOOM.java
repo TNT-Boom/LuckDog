@@ -1,32 +1,27 @@
 package com.limingjian.jvmlearn;
 
 /*
- * ²âÊÔĞéÄâ»úÕ»Óë±¾µØ·½·¨Õ»Òç³ö
- * ²ÎÊı -Xss2M // Õ»Ô½´óÔò¶àÏß³ÌÔ½ÈİÒ×±¬ÄÚ´æ
- * Å×L outofmemory Òì³£
+ * æµ‹è¯•è™šæ‹Ÿæœºæ ˆä¸æœ¬åœ°æ–¹æ³•æ ˆæº¢å‡º
+ * å‚æ•° -Xss2M // æ ˆè¶Šå¤§åˆ™å¤šçº¿ç¨‹è¶Šå®¹æ˜“çˆ†å†…å­˜
+ * æŠ›L outofmemory å¼‚å¸¸
  */
-public class JavaVMStackOOM
-{
-	private void dontStop()
-	{
-		while(true){}
-	}
-	
-	public void stackLeakByThread()
-	{
-		while(true)
-		{
-			Thread thread = new Thread(new Runnable()
-			{
-				
-				@Override
-				public void run()
-				{
-					dontStop();
-					
-				}
-			});
-			thread.start();
-		}
-	}
+public class JavaVMStackOOM {
+    private void dontStop() {
+        while (true) {
+        }
+    }
+
+    public void stackLeakByThread() {
+        while (true) {
+            Thread thread = new Thread(new Runnable() {
+
+                @Override
+                public void run() {
+                    dontStop();
+
+                }
+            });
+            thread.start();
+        }
+    }
 }

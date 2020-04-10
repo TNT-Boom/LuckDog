@@ -1,182 +1,159 @@
 package leetcode.tencent;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 /*
- * ¶ÔÓÚÃ¿×éÊı¾İ£¬Êä³öÁ½¸öÊı£¬µÚÒ»¸öÊı±íÊ¾²î×îĞ¡µÄ¶ÔÊı£¬µÚ¶ş¸öÊı±íÊ¾²î×î´óµÄ¶ÔÊı¡£
+ * å¯¹äºæ¯ç»„æ•°æ®ï¼Œè¾“å‡ºä¸¤ä¸ªæ•°ï¼Œç¬¬ä¸€ä¸ªæ•°è¡¨ç¤ºå·®æœ€å°çš„å¯¹æ•°ï¼Œç¬¬äºŒä¸ªæ•°è¡¨ç¤ºå·®æœ€å¤§çš„å¯¹æ•°ã€‚
  */
-public class MaxMinCollection
-{
-	public static void main(String[] args)
-	{
-		Scanner scanner = new Scanner(System.in);
-		while (scanner.hasNext())
-		{
-			int num = scanner.nextInt();
-			int[] source = new int[num];
-			for (int i = 0; i < num; i++)
-				source[i] = scanner.nextInt();
-			printResult(source, num);
-			getResult(source, num); //ÌáÊ¾³¬Ê±
-		}
-		scanner.close();
-	}
+public class MaxMinCollection {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            int num = scanner.nextInt();
+            int[] source = new int[num];
+            for (int i = 0; i < num; i++) {
+                source[i] = scanner.nextInt();
+            }
+            printResult(source, num);
+            getResult(source, num); //æç¤ºè¶…æ—¶
+        }
+        scanner.close();
+    }
 
-	private static void getResult(int[] source, int n)
-	{
-		Arrays.sort(source); // ÏÈÅÅĞò£¬×îĞ¡ÖµÒ»¶¨³öÏÖÔÚÏàÁÚµÄÁ½¸öÊıÖ®¼ä¡£
-		
-		if(source[0] == source[n - 1]) // ×î´ó×îĞ¡ÏàÍ¬
-		{
-			int result = n * (n - 1) / 2;
-			System.out.println(result + " " + result);
-			return;
-		}
-		int min = Integer.MAX_VALUE;
-		
-		for(int i =1; i < n; i++)
-		{
-			if(min > source[i] - source[i-1])
-			{
-				min = source[i] - source[i - 1];
-			}
-		}
-		
-		int minCount = 0;
-		if(min == 0) // ÕÒ³öÁ¬ĞøÏàÍ¬µÄ¸öÊı£¬È»ºó¼ÆËã×éºÏÊı¡£
-		{
-			int sameCount = 1;
-			int preNum = source[0];
-			for(int i = 1; i < n; i++)
-			{
-				if(source[i] == preNum)
-					sameCount++;
-				else
-				{
-					if(sameCount >= 2)
-					{
-						int temp = 1;
-						temp = sameCount * (sameCount - 1) / 2;
-						minCount += temp;
-					}
-					sameCount = 1;
-				}
-				preNum = source[i];
-			}
-			if(sameCount >= 2)
-			{
-				int temp = 1;
-				temp = sameCount * (sameCount - 1) / 2;
-				minCount += temp;
-			}
-		}
-		else
-		{
-			for(int i = 1; i < n; i++)
-			{
-				if(source[i] - source[i -1] == min)
-					minCount++;
-			}
-		}
-		
-		// getMax   ×î´óÖµ ×îĞ¡ÖµµÄÁ½Á½×éºÏ
-		int minNumCount = 1;
-		int maxNumCount = 1;
-		int i = 1;
-		while(i < n && source[i] == source[i -1])
-		{
-			++minNumCount;
-			++i;
-		}
-		i = n - 2;
-		while(i >=0 && source[i] == source[i + 1])
-		{
-			++maxNumCount;
-			--i;
-		}
-		int maxCount = minNumCount * maxNumCount;
-		
-		System.out.println(minCount + " " + maxCount);
-		
-	}
-	// Ê±¼ä¸´ÔÓ¶È¹ı´ó¡£¡£¡£¡£Ã÷Ã÷ÊÇ O(nlgn)
-	private static void printResult(int[] source, int n)
-	{
-		if(source == null)
-			return;
-		if(n <= 1)
-			System.out.println("0 0");
-		
-		int[] dpMin = new int[n];
-		int[] dpMax = new int[n];
-		dpMin[0] = 0;
-		dpMin[1] = 1;
-		
-		dpMax[0] = 0;
-		dpMax[1] = 1;
-		
-		int totalMin = abs(source[1] - source[0]);
-		int totalMax = abs(source[1] - source[0]);
-		for (int i = 2; i < n; i++)
-		{
-			int min = Integer.MAX_VALUE;
-			int max = Integer.MIN_VALUE;
-			int minCount = 0;
-			int maxCount = 0;
-			for (int k = i - 1; k >= 0; k--)
-			{
-				int gap = abs(source[i] - source[k]);
-				if (gap < min)
-				{
-					minCount = 1;
-					min = gap;
-				}
-				if(gap == min)
-					minCount++;
-				
-				
-				if(gap> max)
-				{
-					maxCount = 1;
-					max = gap;
-				}
-				
-				if(gap == max)
-					maxCount++;
-			}
-			if(min < totalMin)
-			{
-				dpMin[i] = minCount;
-				totalMin = min;
-			}
-			else if(min == totalMin)
-			{
-				dpMin[i] = dpMin[i-1] +minCount;
-			}
-			else
-			{
-				dpMin[i] = dpMin[i - 1];
-			}
-			
-			if(max > totalMax)
-			{
-				dpMax[i] = maxCount;
-				totalMax = max;
-			}
-			else if(max == totalMax)
-			{
-				dpMax[i] = dpMax[i - 1] + maxCount;
-			}
-			else
-			{
-				dpMax[i] = dpMax[i - 1];
-			}
-		}
-		System.out.println(dpMin[n -1] + " " + dpMax[n -1]);
-	}
+    private static void getResult(int[] source, int n) {
+        Arrays.sort(source); // å…ˆæ’åºï¼Œæœ€å°å€¼ä¸€å®šå‡ºç°åœ¨ç›¸é‚»çš„ä¸¤ä¸ªæ•°ä¹‹é—´ã€‚
 
-	private static int abs(int a)
-	{
-		return a > 0 ? a : -a;
-	}
+        if (source[0] == source[n - 1]) // æœ€å¤§æœ€å°ç›¸åŒ
+        {
+            int result = n * (n - 1) / 2;
+            System.out.println(result + " " + result);
+            return;
+        }
+        int min = Integer.MAX_VALUE;
+
+        for (int i = 1; i < n; i++) {
+            if (min > source[i] - source[i - 1]) {
+                min = source[i] - source[i - 1];
+            }
+        }
+
+        int minCount = 0;
+        if (min == 0) // æ‰¾å‡ºè¿ç»­ç›¸åŒçš„ä¸ªæ•°ï¼Œç„¶åè®¡ç®—ç»„åˆæ•°ã€‚
+        {
+            int sameCount = 1;
+            int preNum = source[0];
+            for (int i = 1; i < n; i++) {
+                if (source[i] == preNum) {
+                    sameCount++;
+                } else {
+                    if (sameCount >= 2) {
+                        int temp = 1;
+                        temp = sameCount * (sameCount - 1) / 2;
+                        minCount += temp;
+                    }
+                    sameCount = 1;
+                }
+                preNum = source[i];
+            }
+            if (sameCount >= 2) {
+                int temp = 1;
+                temp = sameCount * (sameCount - 1) / 2;
+                minCount += temp;
+            }
+        } else {
+            for (int i = 1; i < n; i++) {
+                if (source[i] - source[i - 1] == min) {
+                    minCount++;
+                }
+            }
+        }
+
+        // getMax   æœ€å¤§å€¼ æœ€å°å€¼çš„ä¸¤ä¸¤ç»„åˆ
+        int minNumCount = 1;
+        int maxNumCount = 1;
+        int i = 1;
+        while (i < n && source[i] == source[i - 1]) {
+            ++minNumCount;
+            ++i;
+        }
+        i = n - 2;
+        while (i >= 0 && source[i] == source[i + 1]) {
+            ++maxNumCount;
+            --i;
+        }
+        int maxCount = minNumCount * maxNumCount;
+
+        System.out.println(minCount + " " + maxCount);
+
+    }
+
+    // æ—¶é—´å¤æ‚åº¦è¿‡å¤§ã€‚ã€‚ã€‚ã€‚æ˜æ˜æ˜¯ O(nlgn)
+    private static void printResult(int[] source, int n) {
+        if (source == null) {
+            return;
+        }
+        if (n <= 1) {
+            System.out.println("0 0");
+        }
+
+        int[] dpMin = new int[n];
+        int[] dpMax = new int[n];
+        dpMin[0] = 0;
+        dpMin[1] = 1;
+
+        dpMax[0] = 0;
+        dpMax[1] = 1;
+
+        int totalMin = abs(source[1] - source[0]);
+        int totalMax = abs(source[1] - source[0]);
+        for (int i = 2; i < n; i++) {
+            int min = Integer.MAX_VALUE;
+            int max = Integer.MIN_VALUE;
+            int minCount = 0;
+            int maxCount = 0;
+            for (int k = i - 1; k >= 0; k--) {
+                int gap = abs(source[i] - source[k]);
+                if (gap < min) {
+                    minCount = 1;
+                    min = gap;
+                }
+                if (gap == min) {
+                    minCount++;
+                }
+
+
+                if (gap > max) {
+                    maxCount = 1;
+                    max = gap;
+                }
+
+                if (gap == max) {
+                    maxCount++;
+                }
+            }
+            if (min < totalMin) {
+                dpMin[i] = minCount;
+                totalMin = min;
+            } else if (min == totalMin) {
+                dpMin[i] = dpMin[i - 1] + minCount;
+            } else {
+                dpMin[i] = dpMin[i - 1];
+            }
+
+            if (max > totalMax) {
+                dpMax[i] = maxCount;
+                totalMax = max;
+            } else if (max == totalMax) {
+                dpMax[i] = dpMax[i - 1] + maxCount;
+            } else {
+                dpMax[i] = dpMax[i - 1];
+            }
+        }
+        System.out.println(dpMin[n - 1] + " " + dpMax[n - 1]);
+    }
+
+    private static int abs(int a) {
+        return a > 0 ? a : -a;
+    }
 }

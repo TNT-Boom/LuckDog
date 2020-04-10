@@ -1,101 +1,83 @@
 package leetcode.huawei;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /*
- * ³öÕ»Ë³Ğò£¬ºóĞø±ÈÆäĞ¡µÄÊı£¬±ØĞëÊÇ½µĞò¡£
+ * å‡ºæ ˆé¡ºåºï¼Œåç»­æ¯”å…¶å°çš„æ•°ï¼Œå¿…é¡»æ˜¯é™åºã€‚
  */
-public class TrainStation
-{
-	
+public class TrainStation {
 
-	private static ArrayList<String> seque = new ArrayList<>(); 
-	public static void main(String[] args)
-	{
-		Scanner scanner = new Scanner(System.in);
-		while(scanner.hasNext())
-		{
-			Map<Integer, Integer> trains = new HashMap<>();
-			StringBuilder arrayStr = new StringBuilder();
-			int n = scanner.nextInt();
-			int i = 0;
-			while(i < n)
-			{
-				trains.put(i, scanner.nextInt());
-				arrayStr.append(i);
-				++i;
-			}
-			trainEnter(arrayStr.toString());
-			
-			ArrayList<String> result = new ArrayList<>();
-			for (String string : seque)
-			{
-				StringBuilder builder = new StringBuilder();
-				for(int j = 0; j < string.length(); j++)
-				{
-					
-					builder.append(trains.get(string.charAt(j) - '0')).append(" ");
-				}
-				result.add(builder.toString().trim());
-			}
-			
-			Collections.sort(result);
-			for (String string : result)
-			{
-				System.out.println(string);
-			}
-		}
-		scanner.close();
-	}
-	
-	private static void trainEnter(String trainsStr)
-	{
-		genSeque(trainsStr, "", 0);
-	}
 
-	private static void genSeque(String source, String result, int index)
-	{
-		if(index == source.length())
-		{
-			if(isEffective(result))
-				seque.add(result); // ±íÊ¾Ò»´ÎÅÅÁĞÍê³É
-		}
-		else
-		{
-			
-			for(int i = 0; i < source.length(); i++)
-			{
-				if(result.indexOf(source.charAt(i)) < 0) // ¿¼ÂÇb¿ªÍ·µÄÇé¿ö£¬ÈÔÈ»ĞèÒª´Óa¿ªÊ¼
-					genSeque(source, result + source.charAt(i), index + 1);
-			}
-			index++;
-		}
-	}
-	
-	private static boolean isEffective(String result)
-	{
-		for(int i = 0; i < result.length() - 1; ++i)
-		{
-			int currJudge = result.charAt(i) - '0';
-			int currSmall = Integer.MAX_VALUE;
-			for(int j = i +1; j < result.length(); ++j)
-			{
-				int curr = result.charAt(j) - '0';
-				if(curr <  currJudge && curr > currSmall)
-				{
-					return false;
-				}
-				if(curr <  currJudge && curr < currSmall)
-				{
-					currSmall = curr;
-				}
-			}
-		}
+    private static ArrayList<String> seque = new ArrayList<>();
 
-		return true;
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            Map<Integer, Integer> trains = new HashMap<>();
+            StringBuilder arrayStr = new StringBuilder();
+            int n = scanner.nextInt();
+            int i = 0;
+            while (i < n) {
+                trains.put(i, scanner.nextInt());
+                arrayStr.append(i);
+                ++i;
+            }
+            trainEnter(arrayStr.toString());
+
+            ArrayList<String> result = new ArrayList<>();
+            for (String string : seque) {
+                StringBuilder builder = new StringBuilder();
+                for (int j = 0; j < string.length(); j++) {
+
+                    builder.append(trains.get(string.charAt(j) - '0')).append(" ");
+                }
+                result.add(builder.toString().trim());
+            }
+
+            Collections.sort(result);
+            for (String string : result) {
+                System.out.println(string);
+            }
+        }
+        scanner.close();
+    }
+
+    private static void trainEnter(String trainsStr) {
+        genSeque(trainsStr, "", 0);
+    }
+
+    private static void genSeque(String source, String result, int index) {
+        if (index == source.length()) {
+            if (isEffective(result)) {
+                seque.add(result); // è¡¨ç¤ºä¸€æ¬¡æ’åˆ—å®Œæˆ
+            }
+        } else {
+
+            for (int i = 0; i < source.length(); i++) {
+                if (result.indexOf(source.charAt(i)) < 0) // è€ƒè™‘bå¼€å¤´çš„æƒ…å†µï¼Œä»ç„¶éœ€è¦ä»aå¼€å§‹
+                {
+                    genSeque(source, result + source.charAt(i), index + 1);
+                }
+            }
+            index++;
+        }
+    }
+
+    private static boolean isEffective(String result) {
+        for (int i = 0; i < result.length() - 1; ++i) {
+            int currJudge = result.charAt(i) - '0';
+            int currSmall = Integer.MAX_VALUE;
+            for (int j = i + 1; j < result.length(); ++j) {
+                int curr = result.charAt(j) - '0';
+                if (curr < currJudge && curr > currSmall) {
+                    return false;
+                }
+                if (curr < currJudge && curr < currSmall) {
+                    currSmall = curr;
+                }
+            }
+        }
+
+        return true;
+    }
 }

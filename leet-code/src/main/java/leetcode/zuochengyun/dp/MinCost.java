@@ -8,39 +8,33 @@ package leetcode.zuochengyun.dp;
 返回：8
  */
 
-public class MinCost
-{
-	public int findMinCost(String A, int n, String B, int m, int ic, int dc, int cc)
-	{
-		// write code here
-		int[][] result = new int[n + 1][m + 1]; // s1[0...i-1] 转换成 s2[0....j-1]的代价
-		for (int i = 1; i <= n; i++)
-		{
-			result[i][0] = ic + result[i - 1][0];
-		}
+public class MinCost {
+    public int findMinCost(String A, int n, String B, int m, int ic, int dc, int cc) {
+        // write code here
+        int[][] result = new int[n + 1][m + 1]; // s1[0...i-1] 转换成 s2[0....j-1]的代价
+        for (int i = 1; i <= n; i++) {
+            result[i][0] = ic + result[i - 1][0];
+        }
 
-		for (int j = 1; j <= m; j++)
-		{
-			result[0][j] = ic + result[0][j - 1];
-		}
+        for (int j = 1; j <= m; j++) {
+            result[0][j] = ic + result[0][j - 1];
+        }
 
-		for (int i = 2; i <= n; i++)
-		{
-			for (int j = 2; j <= n; j++)
-			{
-				int one = result[i - 1][j] + dc;
-				int two = result[i][j - 1] + ic;
-				int three = result[i - 1][j - 1] + cc;
-				int four = result[i - 1][j - 1];
-				int min = one;
-				min = min < two ? min : two;
-				min = min < three ? min : three;
-				min = min < four ? min : four;
-				result[i][j] = min;
-			}
-		}
+        for (int i = 2; i <= n; i++) {
+            for (int j = 2; j <= n; j++) {
+                int one = result[i - 1][j] + dc;
+                int two = result[i][j - 1] + ic;
+                int three = result[i - 1][j - 1] + cc;
+                int four = result[i - 1][j - 1];
+                int min = one;
+                min = min < two ? min : two;
+                min = min < three ? min : three;
+                min = min < four ? min : four;
+                result[i][j] = min;
+            }
+        }
 
-		return result[n][m];
-	}
+        return result[n][m];
+    }
 
 }

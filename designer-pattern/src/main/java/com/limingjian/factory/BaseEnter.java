@@ -1,6 +1,5 @@
 package com.limingjian.factory;
 
-public interface BaseEnter
-{
-	void runDemo();
+public interface BaseEnter {
+    void runDemo();
 }

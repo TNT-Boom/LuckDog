@@ -3,21 +3,18 @@ package com.limingjian.jvmlearn;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JHeapOutMem
-{
-	/*
-	 * ²âÊÔ¶ÑÒç³ö£¬JVM²ÎÊı£º
-	 * -Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError
-	 */
-	static class OOMObject
-	{}
-	private static List<OOMObject> list = new ArrayList<>();
-	
-	public static void OutOfMem()
-	{
-		while(true)
-		{
-			list.add(new OOMObject());
-		}
-	}
+public class JHeapOutMem {
+    /*
+     * æµ‹è¯•å †æº¢å‡ºï¼ŒJVMå‚æ•°ï¼š
+     * -Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError
+     */
+    static class OOMObject {}
+
+    private static List<OOMObject> list = new ArrayList<>();
+
+    public static void OutOfMem() {
+        while (true) {
+            list.add(new OOMObject());
+        }
+    }
 }

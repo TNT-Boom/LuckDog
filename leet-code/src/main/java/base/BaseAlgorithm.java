@@ -1,6 +1,5 @@
 package base;
 
-public interface BaseAlgorithm
-{
-	public void runDemo();
+public interface BaseAlgorithm {
+    public void runDemo();
 }

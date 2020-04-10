@@ -3,135 +3,120 @@ package leetcode.huawei;
 import java.util.Scanner;
 
 /**
- * Author: Íõ¿¡³¬ Date: 2015-12-24 17:18 All Rights Reserved !!!
+ * Author: ç‹ä¿Šè¶… Date: 2015-12-24 17:18 All Rights Reserved !!!
  */
-public class BigNumStr
-{
-	public static void main(String[] args)
-	{
-		Scanner scanner = new Scanner(System.in);
-		// Scanner scanner = new Scanner(Main.class.getClassLoader().getResourceAsStream("data.txt"));
-		while (scanner.hasNext())
-		{
+public class BigNumStr {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Scanner scanner = new Scanner(Main.class.getClassLoader().getResourceAsStream("data.txt"));
+        while (scanner.hasNext()) {
 
-			String n = scanner.next();
-			String m = scanner.next();
-			System.out.println(addLongInteger(n, m));
-		}
+            String n = scanner.next();
+            String m = scanner.next();
+            System.out.println(addLongInteger(n, m));
+        }
 
-		scanner.close();
-	}
+        scanner.close();
+    }
 
-	/**
-	 * ´óÕûÊıÏà¼Ó£¬ns¡¢ms¶¼²»Ğ¡ÓÚ0
-	 *
-	 * @param ns Êı×Ö
-	 * @param ms Êı×Ö
-	 * @return ½á¹û
-	 */
-	private static String addLongInteger(String ns, String ms)
-	{
-		int[] n = getNumber(ns);
-		int[] m = getNumber(ms);
-		// ½øĞĞ¼ÆËã
-		int[] r = add(m, n);
-		return toNumber(r);
-	}
+    /**
+     * å¤§æ•´æ•°ç›¸åŠ ï¼Œnsã€mséƒ½ä¸å°äº0
+     *
+     * @param ns æ•°å­—
+     * @param ms æ•°å­—
+     * @return ç»“æœ
+     */
+    private static String addLongInteger(String ns, String ms) {
+        int[] n = getNumber(ns);
+        int[] m = getNumber(ms);
+        // è¿›è¡Œè®¡ç®—
+        int[] r = add(m, n);
+        return toNumber(r);
+    }
 
-	/**
-	 * Á½¸ö²»Ğ¡ÓÚÁãµÄÕûÊıÏà¼Ó
-	 *
-	 * @param m ÕûÊı
-	 * @param n ÕûÊı
-	 * @return ½á¹û
-	 */
-	private static int[] add(int[] m, int[] n)
-	{
+    /**
+     * ä¸¤ä¸ªä¸å°äºé›¶çš„æ•´æ•°ç›¸åŠ 
+     *
+     * @param m æ•´æ•°
+     * @param n æ•´æ•°
+     * @return ç»“æœ
+     */
+    private static int[] add(int[] m, int[] n) {
 
-		// System.out.println(Arrays.toString(n) +"\n"+ Arrays.toString(m));
+        // System.out.println(Arrays.toString(n) +"\n"+ Arrays.toString(m));
 
-		// ±£Ö¤n²»Ğ¡ÓÚm
-		if (m.length > n.length)
-		{
-			int[] t = m;
-			m = n;
-			n = t;
-		}
+        // ä¿è¯nä¸å°äºm
+        if (m.length > n.length) {
+            int[] t = m;
+            m = n;
+            n = t;
+        }
 
-		// ½á¹ûµÄ×î´ó³¤¶È
-		int[] r = new int[n.length + 1];
-		// À´×ÔµÍÎ»µÄ½øÎ»
-		int c = 0;
+        // ç»“æœçš„æœ€å¤§é•¿åº¦
+        int[] r = new int[n.length + 1];
+        // æ¥è‡ªä½ä½çš„è¿›ä½
+        int c = 0;
 
-		for (int i = 0; i < m.length; i++)
-		{
-			r[i] = m[i] + n[i] + c;
-			c = r[i] / 10;
-			r[i] %= 10;
-		}
+        for (int i = 0; i < m.length; i++) {
+            r[i] = m[i] + n[i] + c;
+            c = r[i] / 10;
+            r[i] %= 10;
+        }
 
-		// ¼ÆËãÓàÏÂµÄ²¿·Ö
-		for (int i = m.length; i < n.length; i++)
-		{
-			r[i] = n[i] + c;
-			c = r[i] / 10;
-			r[i] %= 10;
-		}
+        // è®¡ç®—ä½™ä¸‹çš„éƒ¨åˆ†
+        for (int i = m.length; i < n.length; i++) {
+            r[i] = n[i] + c;
+            c = r[i] / 10;
+            r[i] %= 10;
+        }
 
-		// System.out.println(Arrays.toString(n) +"\n"+ Arrays.toString(m) + "\n" + Arrays.toString(r));
+        // System.out.println(Arrays.toString(n) +"\n"+ Arrays.toString(m) + "\n" + Arrays.toString(r));
 
-		// ×îºó»¹ÓĞ½øÎ»
-		if (c != 0)
-		{
-			r[r.length - 1] = c;
-			return r;
-		}
-		// Ã»ÓĞ½øÎ»
-		else
-		{
-			int[] ret = new int[r.length - 1];
-			System.arraycopy(r, 0, ret, 0, ret.length);
-			return ret;
-		}
-	}
+        // æœ€åè¿˜æœ‰è¿›ä½
+        if (c != 0) {
+            r[r.length - 1] = c;
+            return r;
+        }
+        // æ²¡æœ‰è¿›ä½
+        else {
+            int[] ret = new int[r.length - 1];
+            System.arraycopy(r, 0, ret, 0, ret.length);
+            return ret;
+        }
+    }
 
-	/**
-	 * ½«ÕûÊı×Ö·û´®±íÊ¾³ÉÕûÊıÊı×é¡¾²»°üº¬·ûºÅÎ»¡¿
-	 *
-	 * @param n ÕûÊı×Ö·û´®
-	 * @return ÕûÊıÊı×é ÏÂ±ê´ÓĞ¡µ½´ó±íÊ¾ÊıÎ»µÄ´ÓµÍµ½¸ß
-	 */
-	private static int[] getNumber(String n)
-	{
-		int[] r = new int[n.length()];
-		for (int i = 0; i < r.length; i++)
-		{
-			r[i] = n.charAt(n.length() - i - 1) - '0';
-		}
+    /**
+     * å°†æ•´æ•°å­—ç¬¦ä¸²è¡¨ç¤ºæˆæ•´æ•°æ•°ç»„ã€ä¸åŒ…å«ç¬¦å·ä½ã€‘
+     *
+     * @param n æ•´æ•°å­—ç¬¦ä¸²
+     * @return æ•´æ•°æ•°ç»„ ä¸‹æ ‡ä»å°åˆ°å¤§è¡¨ç¤ºæ•°ä½çš„ä»ä½åˆ°é«˜
+     */
+    private static int[] getNumber(String n) {
+        int[] r = new int[n.length()];
+        for (int i = 0; i < r.length; i++) {
+            r[i] = n.charAt(n.length() - i - 1) - '0';
+        }
 
-		return r;
-	}
+        return r;
+    }
 
-	/**
-	 * ½«Êı×é±íÊ¾µÄÕûÊı×ª»»³É×Ö·û´®
-	 *
-	 * @param r ÕûÊı
-	 * @return ×Ö·û´®±íÊ¾µÄÕûÊı
-	 */
-	private static String toNumber(int[] r)
-	{
-		if (r == null)
-		{
-			return null;
-		}
+    /**
+     * å°†æ•°ç»„è¡¨ç¤ºçš„æ•´æ•°è½¬æ¢æˆå­—ç¬¦ä¸²
+     *
+     * @param r æ•´æ•°
+     * @return å­—ç¬¦ä¸²è¡¨ç¤ºçš„æ•´æ•°
+     */
+    private static String toNumber(int[] r) {
+        if (r == null) {
+            return null;
+        }
 
-		StringBuilder b = new StringBuilder(r.length);
+        StringBuilder b = new StringBuilder(r.length);
 
-		for (int i = r.length - 1; i >= 0; i--)
-		{
-			b.append(r[i]);
-		}
+        for (int i = r.length - 1; i >= 0; i--) {
+            b.append(r[i]);
+        }
 
-		return b.toString();
-	}
+        return b.toString();
+    }
 }

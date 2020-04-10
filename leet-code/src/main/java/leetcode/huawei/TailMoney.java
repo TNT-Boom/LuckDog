@@ -2,45 +2,40 @@ package leetcode.huawei;
 
 import base.BaseAlgorithm;
 
-public class TailMoney implements BaseAlgorithm
-{
-	public void runDemo()
-	{
-		
-	}
+public class TailMoney implements BaseAlgorithm {
+    public void runDemo() {
 
-	public static void main(String[] args)
-	{
-//		Scanner scanner = new Scanner(System.in);
-//		while(scanner.hasNext())
-//		{
-//			
-//		}
-//		scanner.close();
-		int[] input = new int[] {5,10,25,1};
-		System.out.println(countWays(input, 4, 15));
-	}
-	public static int countWays(int[] changes, int n, int x)
-	{
-		return myCount(changes, n, x);
-	}
+    }
 
-	static int myCount(int S[], int m, int n)
-	{
-		int include, exclusive;
-		int table[][] = new int[n +1 ][m]; // table[i][j] iÔªÇ®£¬Ç°jÖÖ»õ±Ò£¬×éºÏÊı
-		for(int k = 0; k < m; k++)
-			table[0][k] = 1; // 0Ô­µÄÇé¿ö£¬Ã¿ÖÖ»õ±ÒÖ»ÄÜÓĞÒ»ÖÖ·½·¨£¬¼´0Ã¶
-		for(int i = 1; i < n + 1; ++i)
-		{
-			for(int j = 0; j < m; ++j)
-			{
-				include = i - S[j] >= 0 ? table[i-S[j]][j] : 0;
-				exclusive = j >= 1 ? table[i][j - 1] : 0;
-				
-				table[i][j] = include + exclusive;
-			}
-		}
-		return table[n][m-1];
-	}
+    public static void main(String[] args) {
+        //		Scanner scanner = new Scanner(System.in);
+        //		while(scanner.hasNext())
+        //		{
+        //
+        //		}
+        //		scanner.close();
+        int[] input = new int[]{5, 10, 25, 1};
+        System.out.println(countWays(input, 4, 15));
+    }
+
+    public static int countWays(int[] changes, int n, int x) {
+        return myCount(changes, n, x);
+    }
+
+    static int myCount(int S[], int m, int n) {
+        int include, exclusive;
+        int table[][] = new int[n + 1][m]; // table[i][j] iå…ƒé’±ï¼Œå‰jç§è´§å¸ï¼Œç»„åˆæ•°
+        for (int k = 0; k < m; k++) {
+            table[0][k] = 1; // 0åŸçš„æƒ…å†µï¼Œæ¯ç§è´§å¸åªèƒ½æœ‰ä¸€ç§æ–¹æ³•ï¼Œå³0æš
+        }
+        for (int i = 1; i < n + 1; ++i) {
+            for (int j = 0; j < m; ++j) {
+                include = i - S[j] >= 0 ? table[i - S[j]][j] : 0;
+                exclusive = j >= 1 ? table[i][j - 1] : 0;
+
+                table[i][j] = include + exclusive;
+            }
+        }
+        return table[n][m - 1];
+    }
 }

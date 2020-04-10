@@ -1,6 +1,5 @@
 package com.limingjian.factory;
 
-public class PepperoniPizza extends Pizza
-{
+public class PepperoniPizza extends Pizza {
 
 }

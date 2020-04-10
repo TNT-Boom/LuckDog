@@ -1,83 +1,69 @@
 package com.limingjian.multinio;
 
-import java.io.IOException;
-import java.nio.channels.ClosedChannelException;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.Executor;
-
 import com.limingjian.multinio.pool.Boss;
 import com.limingjian.multinio.pool.NioSelectorRunnablePool;
 import com.limingjian.multinio.pool.Worker;
 
-public class NioServerBoss extends AbstractNioSelector implements Boss
-{
+import java.io.IOException;
+import java.nio.channels.*;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.Executor;
 
-	public NioServerBoss(Executor boss, String threadName, NioSelectorRunnablePool pool)
-	{
-		super(boss, threadName, pool);
-	}
-	@Override
-	public void registerAcceptChannelTask(final ServerSocketChannel serverChannel)
-	{
-		final Selector selector = this.selector; // ¸¸ÀàµÄselector
-		registerTask(new Runnable()
-		{
-			
-			@Override
-			public void run()
-			{
-				try
-				{
-					serverChannel.register(selector, SelectionKey.OP_ACCEPT);
-				}
-				catch (ClosedChannelException e)
-				{
-					e.printStackTrace();
-				}
-				
-			}
-		});
-		
-	}
-	@Override
-	protected int select(Selector selector)
-		throws IOException
-	{
-		return selector.select();
-	}
-	
-	// Êµ¼ÊÖ´ĞĞÂß¼­µÄ²¿·Ö£¬´ËÊ±¶ÔÓ¦Ïß³ÌµÄSelectorÒÑ¾­·µ»Ø
-	@Override
-	protected void process(Selector selector) 
-		throws IOException
-	{
-		Set<SelectionKey> selectionKeys = selector.selectedKeys();
-		if(selectionKeys.isEmpty())
-		{
-			return;
-		}
-		
-		for(Iterator<SelectionKey> it = selectionKeys.iterator(); it.hasNext();)
-		{
-			SelectionKey key = it.next();
-			it.remove(); // ·ÀÖ¹ÖØ¸´´¦Àí
-			ServerSocketChannel serverSocketChannel = (ServerSocketChannel)key.channel();
-			
-			//»ñÈ¡¿Í»§¶ËÁ¬½Ó
-			SocketChannel clientChannel = serverSocketChannel.accept(); // ´ËÊ±¿Ï¶¨²»»á×èÈû£¬ÒòÎªµ×²ãÒÑ¾­·µ»Ø
-			clientChannel.configureBlocking(false);
-			
-			Worker nextWorker = getNioSelectorRunnablePool().nextWorker();
-			nextWorker.registerNewClientChannel(clientChannel);
-			
-			System.out.println("ÊÕµ½ĞÂ¿Í»§¶ËÁ¬½Ó");
-		}
-		
-	}
+public class NioServerBoss extends AbstractNioSelector implements Boss {
+
+    public NioServerBoss(Executor boss, String threadName, NioSelectorRunnablePool pool) {
+        super(boss, threadName, pool);
+    }
+
+    @Override
+    public void registerAcceptChannelTask(final ServerSocketChannel serverChannel) {
+        final Selector selector = this.selector; // çˆ¶ç±»çš„selector
+        registerTask(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+                } catch (ClosedChannelException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+    }
+
+    @Override
+    protected int select(Selector selector)
+            throws IOException {
+        return selector.select();
+    }
+
+    // å®é™…æ‰§è¡Œé€»è¾‘çš„éƒ¨åˆ†ï¼Œæ­¤æ—¶å¯¹åº”çº¿ç¨‹çš„Selectorå·²ç»è¿”å›
+    @Override
+    protected void process(Selector selector)
+            throws IOException {
+        Set<SelectionKey> selectionKeys = selector.selectedKeys();
+        if (selectionKeys.isEmpty()) {
+            return;
+        }
+
+        for (Iterator<SelectionKey> it = selectionKeys.iterator(); it.hasNext(); ) {
+            SelectionKey key = it.next();
+            it.remove(); // é˜²æ­¢é‡å¤å¤„ç†
+            ServerSocketChannel serverSocketChannel = (ServerSocketChannel) key.channel();
+
+            //è·å–å®¢æˆ·ç«¯è¿æ¥
+            SocketChannel clientChannel = serverSocketChannel.accept(); // æ­¤æ—¶è‚¯å®šä¸ä¼šé˜»å¡ï¼Œå› ä¸ºåº•å±‚å·²ç»è¿”å›
+            clientChannel.configureBlocking(false);
+
+            Worker nextWorker = getNioSelectorRunnablePool().nextWorker();
+            nextWorker.registerNewClientChannel(clientChannel);
+
+            System.out.println("æ”¶åˆ°æ–°å®¢æˆ·ç«¯è¿æ¥");
+        }
+
+    }
 
 }

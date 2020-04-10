@@ -3,28 +3,23 @@ package leetcode.huawei;
 import java.util.Scanner;
 
 /*
- * ÇóintĞÍÊı¾İÔÚÄÚ´æÖĞ´æ´¢Ê±1µÄ¸öÊı
+ * æ±‚intå‹æ•°æ®åœ¨å†…å­˜ä¸­å­˜å‚¨æ—¶1çš„ä¸ªæ•°
  */
-public class CountOne
-{
-	public static void main(String[] args)
-	{
-		Scanner scanner = new Scanner(System.in);
-		while(scanner.hasNext())
-		{
-			int x = scanner.nextInt();
-			System.out.println(countOne(x));
-		}
-	}
-	
-	private static int countOne(int input)
-	{
-		int count = 0;
-		while(input != 0)
-		{
-			input = input & (input - 1);
-			count++;
-		}
-		return count;
-	}
+public class CountOne {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            int x = scanner.nextInt();
+            System.out.println(countOne(x));
+        }
+    }
+
+    private static int countOne(int input) {
+        int count = 0;
+        while (input != 0) {
+            input = input & (input - 1);
+            count++;
+        }
+        return count;
+    }
 }

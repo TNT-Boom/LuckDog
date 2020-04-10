@@ -3,43 +3,37 @@ package leetcode.huawei;
 import java.util.Scanner;
 
 /*
- * Çó½âÁ¢·½¸ù,ÓÃÅ£¶Ùµü´ú·¨
+ * æ±‚è§£ç«‹æ–¹æ ¹,ç”¨ç‰›é¡¿è¿­ä»£æ³•
  * x(n+1) = xn - f(xn) / f'(xn)
- * ¿¼µã£º¸¡µãÊıÏàµÈÖ®±È½Ï
+ * è€ƒç‚¹ï¼šæµ®ç‚¹æ•°ç›¸ç­‰ä¹‹æ¯”è¾ƒ
  * f(x) = x^3 - input
  */
-public class CubeRoot
-{
-	private static double EPS = 0.000001;
+public class CubeRoot {
+    private static double EPS = 0.000001;
 
-	public static void main(String[] args)
-	{
-		Scanner scanner = new Scanner(System.in);
-		while (scanner.hasNext())
-		{
-			double input = scanner.nextDouble();
-			String str = String.format("%.1f", getCubeRoot(input));
-			System.out.println(str.trim());
-		}
-		scanner.close();
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            double input = scanner.nextDouble();
+            String str = String.format("%.1f", getCubeRoot(input));
+            System.out.println(str.trim());
+        }
+        scanner.close();
+    }
 
-	public static double getCubeRoot(double input)
-	{
-		double x = input;
-		double nextX;
-		double cubeX = x * x * x;
-		while (abs(cubeX - input) > EPS)
-		{
-			nextX = (2.0 * x + input / (x * x)) / 3;
-			x = nextX;
-			cubeX = x * x * x;
-		}
-		return x;
-	}
+    public static double getCubeRoot(double input) {
+        double x = input;
+        double nextX;
+        double cubeX = x * x * x;
+        while (abs(cubeX - input) > EPS) {
+            nextX = (2.0 * x + input / (x * x)) / 3;
+            x = nextX;
+            cubeX = x * x * x;
+        }
+        return x;
+    }
 
-	private static double abs(double input)
-	{
-		return input > 0 ? input : -input;
-	}
+    private static double abs(double input) {
+        return input > 0 ? input : -input;
+    }
 }

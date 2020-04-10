@@ -1,57 +1,50 @@
 package leetcode.jingdong;
 
-public class TrimStr
-{
-	public static void main(String[] args)
-	{
-		String st = " i am a   little boy.  ";
-		System.out.println(trimStr(st));
-		char[] str = st.toCharArray();
-		int i = 0, j = 0;
-		while (str[i] == ' ')
-		{
-			i++;
-		}
-		while (i <= str.length - 1) // ¶ÔÓÚÃ¿¸ö×Ö·û
-		{
-			if (str[i] == ' ' && (i == str.length - 1 || str[i + 1] == ' ')) // ½áÎ²»òÕßÏÂÒ»¸ö×Ö·ûÈÔÈ»ÊÇ¿Õ¸ñ
-			{ // Èç¹ûÖÐ¼ä¿Õ¸ñµÄÖ®ºó»¹´æÔÚ¿Õ¸ñµÄ»°£¬»òÕßÊÇ½áÎ²µÄ»°¡£
-				i++;
-				continue;
-			}
-			str[j++] = str[i++]; // ÏòÇ°ÒÆ¶¯
+public class TrimStr {
+    public static void main(String[] args) {
+        String st = " i am a   little boy.  ";
+        System.out.println(trimStr(st));
+        char[] str = st.toCharArray();
+        int i = 0, j = 0;
+        while (str[i] == ' ') {
+            i++;
+        }
+        while (i <= str.length - 1) // å¯¹äºŽæ¯ä¸ªå­—ç¬¦
+        {
+            if (str[i] == ' ' && (i == str.length - 1 || str[i + 1] == ' ')) // ç»“å°¾æˆ–è€…ä¸‹ä¸€ä¸ªå­—ç¬¦ä»ç„¶æ˜¯ç©ºæ ¼
+            { // å¦‚æžœä¸­é—´ç©ºæ ¼çš„ä¹‹åŽè¿˜å­˜åœ¨ç©ºæ ¼çš„è¯ï¼Œæˆ–è€…æ˜¯ç»“å°¾çš„è¯ã€‚
+                i++;
+                continue;
+            }
+            str[j++] = str[i++]; // å‘å‰ç§»åŠ¨
 
-		}
-		for (int o = 0; o < j; o++)
-		{
-			System.out.print(str[o]);
-		}
-	}
+        }
+        for (int o = 0; o < j; o++) {
+            System.out.print(str[o]);
+        }
+    }
 
-	public static String trimStr(String str)
-	{
+    public static String trimStr(String str) {
 
-		char[] source = str.toCharArray();
-		int i = 0, j = 0;
-		// i ½á¹û´®µÄ×îºóÒ»¸öÎ»ÖÃ
-		// j µ±Ç°´®ÐèÒªÒÆ¶¯µÄÎ»ÖÃ
-		while (source[j] == ' ')
-			j++;
-		while (j < source.length)
-		{
-			// ¿ÉÒÔ±£Ö¤ÓÐÒ»¸ö¿Õ¸ñ,²¢ÇÒ²»¸´ÖÆÎ²°Í¿Õ¸ñ£¬ÅÐ¶ÏÌõ¼þ||²»ÄÜÅª·´
-			if (source[j] == ' ' && (j == source.length - 1 || source[j + 1] == ' ')) 
-			{
-				j++;
-				continue;
-			}
-			source[i++] = source[j++];
-		}
-		StringBuilder builder = new StringBuilder();
-		for (int k = 0; k < i; k++)
-		{
-			builder.append(source[k]);
-		}
-		return builder.toString();
-	}
+        char[] source = str.toCharArray();
+        int i = 0, j = 0;
+        // i ç»“æžœä¸²çš„æœ€åŽä¸€ä¸ªä½ç½®
+        // j å½“å‰ä¸²éœ€è¦ç§»åŠ¨çš„ä½ç½®
+        while (source[j] == ' ') {
+            j++;
+        }
+        while (j < source.length) {
+            // å¯ä»¥ä¿è¯æœ‰ä¸€ä¸ªç©ºæ ¼,å¹¶ä¸”ä¸å¤åˆ¶å°¾å·´ç©ºæ ¼ï¼Œåˆ¤æ–­æ¡ä»¶||ä¸èƒ½å¼„å
+            if (source[j] == ' ' && (j == source.length - 1 || source[j + 1] == ' ')) {
+                j++;
+                continue;
+            }
+            source[i++] = source[j++];
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int k = 0; k < i; k++) {
+            builder.append(source[k]);
+        }
+        return builder.toString();
+    }
 }

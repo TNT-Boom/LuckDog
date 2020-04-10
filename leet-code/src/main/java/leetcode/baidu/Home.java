@@ -1,73 +1,61 @@
 package leetcode.baidu;
 
 import java.util.Scanner;
+
 // http://cache.baiducontent.com/c?m=9d78d513d9d437ab4f9b96697b14c017694381132ba6d2020fd08438e5732840506793ac57530775d7d20c1716dc3e4beb802104331456b58cc9f85dadbc8559299f2644676d805663d60eaebb5155c637e158feae69f0caf125e2abc5a2ac4325c844040a9780804d7710dd1f80034294b19838022e61ad9a30728e5f6059eb3707f619f6ba74284596f7ae4151866f957611e0fe69e0604fe052b31f6c7519ff51e6540a7561e34f3abd593a0398ef5ced2b6e4054ec0eece7&p=85769a47c0934eac58e8de62564e8d&newp=9e72da0d9e934eac58e8822d021495231610db2151ddd501298ffe0cc4241a1a1a3aecbf26221504d2c77c6607ae4a5beff33c76300634f1f689df08d2ecce7e39&user=baidu&fm=sc&query=%D6%D0%D0%CB%C0%B6%BD%A3%BC%C6%BB%AE%D6%D0%B5%C4%C4%C7%B5%C0%B3%C7%CA%D0%B9%E6%BB%AE%CC%E2%C4%BF&qid=905117c700003c35&p1=1
-//Ä¿»ØÒä£ºÎªÁË¹æ»®³ÇÊĞ£¬ĞèÒªÍ³¼Æ·¿ÎİÊıÄ¿ĞÅÏ¢¡£
-//·½·¨ÈçÏÂ£¬Ò»ÕÅº½ÅÄÕÕÆ¬»á±»·Ö¸ôÎªM*N¸öĞ¡¸ñ×Ó£¬
-//ÓÃÊı×Ö0»ò1·Ö±ğ±íÊ¾Ä³¸ñ×Ó¿´µ½µÄÊÇ¿ÕµØ»¹ÊÇÎİ¶¥£¬ÏàÁÚµÄÎİ¶¥ÊôÓÚÍ¬Ò»¶°·¿×Ó£¬
-//Î»ÓÚ¶Ô½ÇÏßÉÏµÄÎİ¶¥²»ÊôÓÚÍ¬Ò»¶°·¿×Ó£¨ÕâÒ²·ûºÏÊµ¼Ê£©£¬ÏÖÔÚÏÈÊäÈëº½ÅÄÕÕÆ¬µÄ´óĞ¡£¨MĞĞNÁĞ£©£¬
-//ÔÙÊäÈë¾ØĞÎ¸©ÊÓÍ¼µÄ²¼¾Ö£¬ÒªÇóÎÒÃÇÊä³öÕâ¿é¾ØĞÎ¿ÕµØÖĞÓĞ¶àÉÙ¶°·¿×Ó
-public class Home
-{
-	public static void main(String[] args)
-	{
-		// TODO Auto-generated method stub
+//ç›®å›å¿†ï¼šä¸ºäº†è§„åˆ’åŸå¸‚ï¼Œéœ€è¦ç»Ÿè®¡æˆ¿å±‹æ•°ç›®ä¿¡æ¯ã€‚
+//æ–¹æ³•å¦‚ä¸‹ï¼Œä¸€å¼ èˆªæ‹ç…§ç‰‡ä¼šè¢«åˆ†éš”ä¸ºM*Nä¸ªå°æ ¼å­ï¼Œ
+//ç”¨æ•°å­—0æˆ–1åˆ†åˆ«è¡¨ç¤ºæŸæ ¼å­çœ‹åˆ°çš„æ˜¯ç©ºåœ°è¿˜æ˜¯å±‹é¡¶ï¼Œç›¸é‚»çš„å±‹é¡¶å±äºåŒä¸€æ ‹æˆ¿å­ï¼Œ
+//ä½äºå¯¹è§’çº¿ä¸Šçš„å±‹é¡¶ä¸å±äºåŒä¸€æ ‹æˆ¿å­ï¼ˆè¿™ä¹Ÿç¬¦åˆå®é™…ï¼‰ï¼Œç°åœ¨å…ˆè¾“å…¥èˆªæ‹ç…§ç‰‡çš„å¤§å°ï¼ˆMè¡ŒNåˆ—ï¼‰ï¼Œ
+//å†è¾“å…¥çŸ©å½¢ä¿¯è§†å›¾çš„å¸ƒå±€ï¼Œè¦æ±‚æˆ‘ä»¬è¾“å‡ºè¿™å—çŸ©å½¢ç©ºåœ°ä¸­æœ‰å¤šå°‘æ ‹æˆ¿å­
+public class Home {
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
 
-		Scanner scan = new Scanner(System.in);
-		while (scan.hasNext())
-		{
-			int row = scan.nextInt();
-			int col = scan.nextInt();
-			int[][] matrix = new int[row][col];
-			for (int i = 0; i < row; i++)
-			{
-				for (int j = 0; j < col; j++)
-				{
-					matrix[i][j] = scan.nextInt();
-				}
-			}
-			System.out.println(CountHourse.doCountHourse(matrix));
+        Scanner scan = new Scanner(System.in);
+        while (scan.hasNext()) {
+            int row = scan.nextInt();
+            int col = scan.nextInt();
+            int[][] matrix = new int[row][col];
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < col; j++) {
+                    matrix[i][j] = scan.nextInt();
+                }
+            }
+            System.out.println(CountHourse.doCountHourse(matrix));
 
-		}
-		scan.close();
-	}
+        }
+        scan.close();
+    }
 
 }
 
-class CountHourse
-{
-	public static int doCountHourse(int[][] matrix)
-	{
-		int count = 0;
-		int row = matrix.length;
-		int col = matrix[0].length;
-		for (int i = 0; i < row; i++)
-		{
-			for (int j = 0; j < col; j++)
-			{
-				if (matrix[i][j] == 1)
-				{
-					count++;
-					route(i, j, matrix);
-				}
-			}
-		}
-		return count;
-	}
+class CountHourse {
+    public static int doCountHourse(int[][] matrix) {
+        int count = 0;
+        int row = matrix.length;
+        int col = matrix[0].length;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (matrix[i][j] == 1) {
+                    count++;
+                    route(i, j, matrix);
+                }
+            }
+        }
+        return count;
+    }
 
-	public static void route(int i, int j, int[][] matrix)
-	{
-		if (i >= 0 && i < matrix.length && j >= 0 && j < matrix[0].length)
-		{
-			if (matrix[i][j] == 1)
-			{
-				matrix[i][j] = 0;
-				route(i - 1, j, matrix);
-				route(i + 1, j, matrix);
-				route(i, j - 1, matrix);
-				route(i, j + 1, matrix);
-			}
-		}
+    public static void route(int i, int j, int[][] matrix) {
+        if (i >= 0 && i < matrix.length && j >= 0 && j < matrix[0].length) {
+            if (matrix[i][j] == 1) {
+                matrix[i][j] = 0;
+                route(i - 1, j, matrix);
+                route(i + 1, j, matrix);
+                route(i, j - 1, matrix);
+                route(i, j + 1, matrix);
+            }
+        }
 
-	}
+    }
 }
