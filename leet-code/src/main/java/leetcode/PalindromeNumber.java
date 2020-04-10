@@ -32,27 +32,8 @@ public class PalindromeNumber implements BaseAlgorithm {
         }
     }
 
-    public static void main(String[] args) {
-        //System.out.println(isPalindrome(10));
-        //System.out.println(isPalindrome(12321));
-        //System.out.println(isPalindrome(-123));
-        //System.out.println(isPalindrome(0));
-        testFinally();
-    }
-
+    @Override
     public void runDemo() {
 
-    }
-
-    public static void testFinally() {
-        System.out.println("before try");
-        return;
-        try {
-            //throw new Exception("try throws exception");
-        } catch (Exception e) {
-            System.out.println("catch excption");
-        } finally {
-            System.out.println("finally");
-        }
     }
 }

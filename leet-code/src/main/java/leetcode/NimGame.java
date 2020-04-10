@@ -2,6 +2,9 @@ package leetcode;
 
 import base.BaseAlgorithm;
 
+/**
+ * ç»™æˆ‘ä»¬ä¸€å †çŸ³å­ï¼Œæ¯æ¬¡å¯ä»¥æ‹¿ä¸€ä¸ªä¸¤ä¸ªæˆ–ä¸‰ä¸ªï¼Œä¸¤ä¸ªäººè½®æµæ‹¿ï¼Œæ‹¿åˆ°æœ€åŽä¸€ä¸ªçŸ³å­çš„äººèŽ·èƒœï¼ŒçŽ°åœ¨ç»™æˆ‘ä»¬ä¸€å †çŸ³å­çš„ä¸ªæ•°ï¼Œé—®æˆ‘ä»¬èƒ½ä¸èƒ½èµ¢
+ */
 public class NimGame implements BaseAlgorithm {
 
     @Override
@@ -9,17 +12,20 @@ public class NimGame implements BaseAlgorithm {
         System.out.println(canWinNim(100));
     }
 
-    /*A ÏÈ£¬ B ºó
-     * Ê×ÏÈ¿¼ÂÇÏÈÊÖ±ØÊä
-     * ÈôÓÐm + 1 ¸öÇò£¬ÔòÎÞÂÛAÃþ¼¸¸ö£¬»úÖÇµÄB×ÜÄÜÈ¡¹âÊ£ÏÂµÄ¡£
-     * ¿¼ÂÇ(m + 1 )k£¬ÎÞÂÛAµÚÒ»´ÎÃþ¼¸¸ö£¬»úÖÇµÄB×ÜÄÜÔì³É (m + 1)(k -1)µÄÇé¿ö£¬È»ºóÂÖµ½A
-     * Èç´ËÍù¸´£¬Ôò×ÜÄÜµ½m + 1µÄÇé¿öÈÃAÃþ£¬Ôò×îÖÕ£¬A±ØÊä
+    /**
+     *  A å…ˆï¼Œ B åŽ
+     *  é¦–å…ˆè€ƒè™‘å…ˆæ‰‹å¿…è¾“
+     *  è‹¥æœ‰m + 1 ä¸ªçƒï¼Œåˆ™æ— è®ºAæ‘¸å‡ ä¸ªï¼Œæœºæ™ºçš„Bæ€»èƒ½å–å…‰å‰©ä¸‹çš„ã€‚
+     *  è€ƒè™‘(m + 1 )kï¼Œæ— è®ºAç¬¬ä¸€æ¬¡æ‘¸å‡ ä¸ªï¼Œæœºæ™ºçš„Bæ€»èƒ½é€ æˆ (m + 1)(k -1)çš„æƒ…å†µï¼Œç„¶åŽè½®åˆ°A
+     *  å¦‚æ­¤å¾€å¤ï¼Œåˆ™æ€»èƒ½åˆ°m + 1çš„æƒ…å†µè®©Aæ‘¸ï¼Œåˆ™æœ€ç»ˆï¼ŒAå¿…è¾“
      *
-     * ÏÂÃæ¿¼ÂÇ±ØÓ®
-     * ÈôÓÐ(m + 1)k + s ¸öÇò£¬ÆäÖÐ 0 < s <= m
-     * AÏÈÃþ1¸ö£¬È»ºóÔì³É (m + 1)(k - 1) + m + sµÄÇé¿ö¸øB
-     * ÂÖµ½B£¬ÎÞÂÛBÃþ¼¸¸ö£¬A×ÜÄÜÔì³É(m + 1)(k - 2) + m + sµÄÇé¿ö¸øB
-     * Èç´ËÍù¸´£¬×îºó³ÉÁË m + s ¸øBÃþ£¬ÎÞÂÛBÃþÊ²Ã´£¬A×ÜÄÜ Ó®¡£
+     *  ä¸‹é¢è€ƒè™‘å¿…èµ¢
+     *  è‹¥æœ‰(m + 1)k + s ä¸ªçƒï¼Œå…¶ä¸­ 0 < s <= m
+     *  Aå…ˆæ‘¸1ä¸ªï¼Œç„¶åŽé€ æˆ (m + 1)(k - 1) + m + sçš„æƒ…å†µç»™B
+     *  è½®åˆ°Bï¼Œæ— è®ºBæ‘¸å‡ ä¸ªï¼ŒAæ€»èƒ½é€ æˆ(m + 1)(k - 2) + m + sçš„æƒ…å†µç»™B
+     *  å¦‚æ­¤å¾€å¤ï¼Œæœ€åŽæˆäº† m + s ç»™Bæ‘¸ï¼Œæ— è®ºBæ‘¸ä»€ä¹ˆï¼ŒAæ€»èƒ½ èµ¢ã€‚
+     * @param n
+     * @return
      */
     public boolean canWinNim(int n) {
         return n % (3 + 1) != 0;
