@@ -10,8 +10,7 @@ import static org.junit.Assert.*;
 public class TwoStackTest {
 
     @Before
-    public void setUp()
-            throws Exception {
+    public void setUp() {
     }
 
     @Test

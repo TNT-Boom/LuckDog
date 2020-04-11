@@ -8,8 +8,7 @@ public class GetMinStackTest {
     GetMinStack getMinStack;
 
     @Before
-    public void setUp()
-            throws Exception {
+    public void setUp() {
         getMinStack = new GetMinStack();
     }
 

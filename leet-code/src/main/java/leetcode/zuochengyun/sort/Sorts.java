@@ -1,18 +1,6 @@
-package leetcode.zuochengyun.sorttopic;
+package leetcode.zuochengyun.sort;
 
 public class Sorts {
-    public int[] bubbleSort(int[] A, int n) {
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (A[i] < A[j]) {
-                    int temp = A[i];
-                    A[i] = A[j];
-                    A[j] = temp;
-                }
-            }
-        }
-        return A;
-    }
 
     public int[] selectionSort(int[] A, int n) {
         for (int i = 0; i < n; i++) {
@@ -84,40 +72,6 @@ public class Sorts {
         for (int i = 0; i < numElements; i++, rightEnd--) {
             array[rightEnd] = tmpArray[rightEnd];
         }
-    }
-
-    public int[] quickSort(int[] A, int n) {
-        quickSort(A, 0, n - 1);
-        return A;
-    }
-
-    private void quickSort(int[] array, int low, int high) {
-        if (low < high) {
-            int partIndex = partion(array, low, high);
-            quickSort(array, low, partIndex);
-            quickSort(array, partIndex + 1, high);
-        }
-    }
-
-    private int partion(int[] array, int low, int high) {
-        int temp = array[low];
-        while (low < high) {
-            while (low < high && array[high] >= temp) {
-                high--;
-            }
-            if (low < high) {
-                array[low++] = array[high];
-            }
-            while (low < high && array[low] <= temp) {
-                low++;
-            }
-            if (low < high) {
-                array[high--] = array[low];
-            }
-        }
-        array[low] = temp;
-        return low;
-
     }
 
     public int[] heapSort(int[] A, int n) {
@@ -226,18 +180,6 @@ public class Sorts {
             A[index++] = deleteMin(heapArray, k--);
         }
         return A;
-    }
-
-    public boolean checkDuplicate(int[] a, int n) {
-        a = bubbleSort(a, n);
-        int temp = a[0];
-        for (int i = 1; i < a.length; i++) {
-            if (a[i] == temp) {
-                return false;
-            }
-            temp = a[i];
-        }
-        return true;
     }
 
     public int[] mergeAB(int[] A, int[] B, int n, int m) {
