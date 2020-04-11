@@ -1,5 +1,8 @@
 package leetcode.zuochengyun.pailiezuhe;
 
+/**
+ * @author lmj
+ */
 public class PaiLieZuheTools {
     public static void main(String[] args) {
         System.out.println(cnm(4, 2));
@@ -21,7 +24,6 @@ public class PaiLieZuheTools {
     public static int anm(int n, int m) {
         int count = m;
         int total = 1;
-        ;
         while (count > 0) {
             total *= (n - count-- + 1);
         }

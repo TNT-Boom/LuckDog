@@ -1,25 +1,26 @@
 package leetcode.zuochengyun.dp;
 
-/*
- * ÒªÇóÁ¬Ğø³öÏÖµÄÒ»ÖÖ¹«¹²×ÓĞòÁĞ
+/**
+ * @author lmj
+ * è¦æ±‚è¿ç»­å‡ºç°çš„ä¸€ç§å…¬å…±å­åºåˆ—
  */
-public class ALCS {
+public class Alcs {
     public static void main(String[] args) {
-        System.out.println(getLCS("acbac", "acaccbabb"));
+        System.out.println(getLcs("acbac", "acaccbabb"));
     }
 
-    private static String getLCS(String s1, String s2) {
+    private static String getLcs(String s1, String s2) {
         String longestStr = "";
         int i = 0;
         int j = 0;
-        for (i = 0; i < s1.length(); i++) // µÚÒ»¸öÑ­»·È·¶¨ S1µÄÆğµã
-        {
-            for (j = 0; j < s2.length(); j++) // µÚ¶ş¸öÑ­»·³¢ÊÔÑ°ÕÒS2µÄÆğµã
-            {
+        // ç¬¬ä¸€ä¸ªå¾ªç¯ç¡®å®š S1çš„èµ·ç‚¹
+        for (i = 0; i < s1.length(); i++) {
+            // ç¬¬äºŒä¸ªå¾ªç¯å°è¯•å¯»æ‰¾S2çš„èµ·ç‚¹
+            for (j = 0; j < s2.length(); j++) {
                 if (s2.charAt(j) != s1.charAt(i)) {
                     continue;
                 }
-                // ÕÒµ½ÁË¹«¹²¿ªÊ¼µÄÎ»ÖÃ
+                // æ‰¾åˆ°äº†å…¬å…±å¼€å§‹çš„ä½ç½®
                 String temp = getLongest(s1, s2, i, j);
                 if (temp.length() > longestStr.length()) {
                     longestStr = temp;
@@ -31,7 +32,8 @@ public class ALCS {
 
     private static String getLongest(String s1, String s2, int i, int j) {
         int start = i;
-        int iend = i; // ×î³¤×Ó´®µÄÏÂÒ»¸öË÷Òı
+        // æœ€é•¿å­ä¸²çš„ä¸‹ä¸€ä¸ªç´¢å¼•
+        int iend = i;
         while (i < s1.length() && j < s2.length() && s1.charAt(i++) == s2.charAt(j++)) {
             iend = i;
         }

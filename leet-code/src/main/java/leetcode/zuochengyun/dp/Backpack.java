@@ -1,13 +1,13 @@
 package leetcode.zuochengyun.dp;
 
-/*
- * ±³°üÎÊÌâ
- * 
- * Ò»¸ö±³°üÓÐÒ»¶¨µÄ³ÐÖØcap£¬ÓÐN¼þÎïÆ·£¬Ã¿¼þ¶¼ÓÐ×Ô¼ºµÄ¼ÛÖµ£¬¼ÇÂ¼ÔÚÊý×évÖÐ£¬Ò²¶¼ÓÐ×Ô¼ºµÄÖØÁ¿£¬¼ÇÂ¼ÔÚÊý×éwÖÐ£¬Ã¿¼þÎïÆ·Ö»ÄÜÑ¡ÔñÒª×°Èë±³°ü»¹ÊÇ²»×°Èë±³°ü£¬ÒªÇóÔÚ²»³¬¹ý±³°ü³ÐÖØµÄÇ°ÌáÏÂ£¬Ñ¡³öÎïÆ·µÄ×Ü¼ÛÖµ×î´ó¡£
-¸ø¶¨ÎïÆ·µÄÖØÁ¿w¼ÛÖµv¼°ÎïÆ·ÊýnºÍ³ÐÖØcap¡£Çë·µ»Ø×î´ó×Ü¼ÛÖµ¡£
-²âÊÔÑùÀý£º
-[1,2,3],[1,2,3],3,6
-·µ»Ø£º6
+/**
+ * @author lmj
+ *  èƒŒåŒ…é—®é¢˜
+ *  ä¸€ä¸ªèƒŒåŒ…æœ‰ä¸€å®šçš„æ‰¿é‡capï¼Œæœ‰Nä»¶ç‰©å“ï¼Œæ¯ä»¶éƒ½æœ‰è‡ªå·±çš„ä»·å€¼ï¼Œè®°å½•åœ¨æ•°ç»„vä¸­ï¼Œä¹Ÿéƒ½æœ‰è‡ªå·±çš„é‡é‡ï¼Œè®°å½•åœ¨æ•°ç»„wä¸­ï¼Œæ¯ä»¶ç‰©å“åªèƒ½é€‰æ‹©è¦è£…å…¥èƒŒåŒ…è¿˜æ˜¯ä¸è£…å…¥èƒŒåŒ…ï¼Œè¦æ±‚åœ¨ä¸è¶…è¿‡èƒŒåŒ…æ‰¿é‡çš„å‰æä¸‹ï¼Œé€‰å‡ºç‰©å“çš„æ€»ä»·å€¼æœ€å¤§ã€‚
+ * ç»™å®šç‰©å“çš„é‡é‡wä»·å€¼våŠç‰©å“æ•°nå’Œæ‰¿é‡capã€‚è¯·è¿”å›žæœ€å¤§æ€»ä»·å€¼ã€‚
+ * æµ‹è¯•æ ·ä¾‹ï¼š
+ * [1,2,3],[1,2,3],3,6
+ * è¿”å›žï¼š6
  */
 public class Backpack {
     public static void main(String[] args) {
@@ -17,7 +17,8 @@ public class Backpack {
     }
 
     public static int maxValue(int[] w, int[] v, int n, int cap) {
-        int[][] result = new int[n + 1][cap + 1]; // ±íÊ¾ Ç°i¼þÎïÆ·²»³¬¹ýÖØÁ¿YµÄ×î´ó¼ÛÖµ
+        // è¡¨ç¤º å‰iä»¶ç‰©å“ä¸è¶…è¿‡é‡é‡Yçš„æœ€å¤§ä»·å€¼
+        int[][] result = new int[n + 1][cap + 1];
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= cap; j++) {
                 if (i == 1 && v[i - 1] <= j) {

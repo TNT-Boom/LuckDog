@@ -2,33 +2,40 @@ package leetcode.zuochengyun.gailv;
 
 import java.util.Random;
 
-/*
- * ��һ����������Ȼ�����еķ�ʽ�³���1����2����3����ȵȡ�����һ�����ӣ����������ֻ��װ��K���򣬲��ҳ��������⣬��û�и���Ŀռ䣬
- * һ����һ���ӵ�������Ҳ�����ûء����һ��ѡ��ʽ��ʹ�õ������³���N�����ʱ��������е�������K����
- * ͬʱ���Ա�֤��1����N�����е�ÿһ������ѡ�����ӵĸ��ʶ���K/N����һ������������ӣ���һ��ֻ��װ��10����Ĵ��ӣ�
- * ���³�100����ʱ����������10 �򣬲���1~100���е�ÿһ����ѡ�еĸ��ʶ���10/100��Ȼ��������򣬵��³�1000����ʱ��
- * �������� 10 ���򣬲���1~1000���е�ÿһ����ѡ�еĸ��ʶ���10/1000���������򣬵��³�i����ʱ����������10����
- * ����1~i���е�ÿһ����ѡ�еĸ��ʶ���10/i��
- * Ҳ��������N�ı仯��1~N����ѡ�еĸ��ʶ�̬�仯��k/N���뽫�³���N����ʱ�����е���ı�ŷ��ء�
+/**
+ * @author lmj
+ * 有一个机器按自然数序列的方式吐出球，1号球，2号球，3号球等等。你有一个袋子，袋子里最多只能装下K个球，并且除袋子以外，你没有更多的空间，
+ * 一个球一旦扔掉，就再也不可拿回。设计一种选择方式，使得当机器吐出第N号球的时候，你袋子中的球数是K个，
+ * 同时可以保证从1号球到N号球中的每一个，被选进袋子的概率都是K/N。举一个更具体的例子，有一个只能装下10个球的袋子，
+ * 当吐出100个球时，袋子里有10 球，并且1~100号中的每一个球被选中的概率都是10/100。然后继续吐球，当吐出1000个球时，
+ * 袋子里有 10 个球，并且1~1000号中的每一个球被选中的概率都是10/1000。继续吐球，当吐出i个球时，袋子里有10个球，
+ * 并且1~i号中的每一个球被选中的概率都是10/i。
+ * 也就是随着N的变化，1~N号球被选中的概率动态变化成k/N。请将吐出第N个球时袋子中的球的编号返回。
  */
 public class Bag {
     private int[] selected = null;
     private static Random rand = new Random(12345);
 
-    // ÿ����һ���򶼻�������������N��ʾ��i�ε���
-    public int[] carryBalls(int N, int k) {
+    /**
+     * 每次拿一个球都会调用这个函数，N表示第i次调用
+     * @param n
+     * @param k
+     * @return
+     */
+    public int[] carryBalls(int n, int k) {
         if (selected == null) {
             selected = new int[k];
         }
 
-        if (N <= k) {
-            selected[N - 1] = N;
+        if (n <= k) {
+            selected[n - 1] = n;
         } else {
-            int num = rand.nextInt(N);
-            if (num < k) // ���� i / k�ĸ��ʣ����Ծ���������
-            {
-                int index = rand.nextInt(k); // �Ӱ��������ѡһ��
-                selected[index] = N;
+            int num = rand.nextInt(n);
+            // 符合 i / k的概率，所以决定其留下
+            if (num < k) {
+                // 从包里面随机选一个
+                int index = rand.nextInt(k);
+                selected[index] = n;
             }
         }
 
