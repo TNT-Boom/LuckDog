@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.linkedlist;
+package leetcode.linkedlist;
 
 public class Remove {
     public boolean removeNode(ListNode pNode) {

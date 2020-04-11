@@ -1,8 +1,8 @@
-package leetcode.zuochengyun.dp;
+package leetcode.dp;
 
 /*
- * ÓÐÒ»¸ö¾ØÕómap£¬ËüÃ¿¸ö¸ñ×ÓÓÐÒ»¸öÈ¨Öµ¡£´Ó×óÉÏ½ÇµÄ¸ñ×Ó¿ªÊ¼Ã¿´ÎÖ»ÄÜÏòÓÒ»òÕßÏòÏÂ×ß£¬×îºóµ½´ïÓÒÏÂ½ÇµÄÎ»ÖÃ£¬Â·¾¶ÉÏËùÓÐµÄÊý×ÖÀÛ¼ÓÆðÀ´¾ÍÊÇÂ·¾¶ºÍ£¬·µ»ØËùÓÐµÄÂ·¾¶ÖÐ×îÐ¡µÄÂ·¾¶ºÍ¡£
-¸ø¶¨Ò»¸ö¾ØÕómap¼°ËüµÄÐÐÊýnºÍÁÐÊým£¬Çë·µ»Ø×îÐ¡Â·¾¶ºÍ¡£±£Ö¤ÐÐÁÐÊý¾ùÐ¡ÓÚµÈÓÚ100.
+ * æœ‰ä¸€ä¸ªçŸ©é˜µmapï¼Œå®ƒæ¯ä¸ªæ ¼å­æœ‰ä¸€ä¸ªæƒå€¼ã€‚ä»Žå·¦ä¸Šè§’çš„æ ¼å­å¼€å§‹æ¯æ¬¡åªèƒ½å‘å³æˆ–è€…å‘ä¸‹èµ°ï¼Œæœ€åŽåˆ°è¾¾å³ä¸‹è§’çš„ä½ç½®ï¼Œè·¯å¾„ä¸Šæ‰€æœ‰çš„æ•°å­—ç´¯åŠ èµ·æ¥å°±æ˜¯è·¯å¾„å’Œï¼Œè¿”å›žæ‰€æœ‰çš„è·¯å¾„ä¸­æœ€å°çš„è·¯å¾„å’Œã€‚
+ç»™å®šä¸€ä¸ªçŸ©é˜µmapåŠå®ƒçš„è¡Œæ•°nå’Œåˆ—æ•°mï¼Œè¯·è¿”å›žæœ€å°è·¯å¾„å’Œã€‚ä¿è¯è¡Œåˆ—æ•°å‡å°äºŽç­‰äºŽ100.
  */
 public class MinimumPath {
     public int getMin(int[][] map, int n, int m) {
@@ -21,8 +21,10 @@ public class MinimumPath {
 
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < m; j++) {
-                int one = map[i][j] + result[i - 1][j]; // À´×ÔÉÏÃæ
-                int two = map[i][j] + result[i][j - 1]; // À´×Ô×ó±ß
+                // æ¥è‡ªä¸Šé¢
+                int one = map[i][j] + result[i - 1][j];
+                // æ¥è‡ªå·¦è¾¹
+                int two = map[i][j] + result[i][j - 1];
                 result[i][j] = one > two ? two : one;
             }
         }

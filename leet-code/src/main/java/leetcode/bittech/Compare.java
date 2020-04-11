@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bittech;
+package leetcode.bittech;
 
 public class Compare {
     public int getMax(int a, int b) {
@@ -6,20 +6,27 @@ public class Compare {
         int as = sign(a);
         int bs = sign(b);
         int cs = sign(c);
-        int difabs = as ^ bs; // 不同为1，相同为0
+        // 不同为1，相同为0
+        int difabs = as ^ bs;
         int sameabs = flip(difabs);
 
         int returnA = difabs * as + sameabs * cs;
         int returnB = flip(returnA);
-        return a * returnA + b * returnB; // returnA returnB一个0，一个1
+        // returnA returnB一个0，一个1
+        return a * returnA + b * returnB;
     }
 
-    public int sign(int n) // 正1 负0 ，正包括0
-    {
+    /**
+     *  正1 负0 ，正包括0
+     * @param n
+     * @return
+     */
+    public int sign(int n) {
         return flip((n >> 31) & 1);
     }
 
     public int flip(int n) {
-        return n ^ 1; // 1--> 0; 0-->1;
+        // 1--> 0; 0-->1;
+        return n ^ 1;
     }
 }

@@ -1,13 +1,18 @@
-package leetcode.zuochengyun.linkedlist;
+package leetcode.linkedlist;
 
 public class Divide {
 
     public ListNode listDivide(ListNode head, int pivot) {
-        ListNode sH = null; // small head
-        ListNode sT = null; // small tail
-        ListNode bH = null; // big head
-        ListNode bT = null; // big tail
-        ListNode next = null; // save next node
+        // small head
+        ListNode sH = null;
+        // small tail
+        ListNode sT = null;
+        // big head
+        ListNode bH = null;
+        // big tail
+        ListNode bT = null;
+        // save next node
+        ListNode next;
         // every node distributed to three lists
         while (head != null) {
             next = head.next;

@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.dp;
+package leetcode.dp;
 
 /**
  * @author lmj

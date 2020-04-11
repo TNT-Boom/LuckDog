@@ -1,17 +1,18 @@
-package leetcode.zuochengyun.dp;
+package leetcode.dp;
 
 /*
- * ¶ÔÓÚÁ½¸ö×Ö·û´®AºÍB£¬ÎÒÃÇÐèÒª½øÐÐ²åÈë¡¢É¾³ýºÍÐÞ¸Ä²Ù×÷½«A´®±äÎªB´®£¬¶¨Òåc0£¬c1£¬c2·Ö±ðÎªÈýÖÖ²Ù×÷µÄ´ú¼Û£¬ÇëÉè¼ÆÒ»¸ö¸ßÐ§Ëã·¨£¬Çó³ö½«A´®±äÎªB´®ËùÐèÒªµÄ×îÉÙ´ú¼Û¡£
-¸ø¶¨Á½¸ö×Ö·û´®AºÍB£¬¼°ËüÃÇµÄ³¤¶ÈºÍÈýÖÖ²Ù×÷´ú¼Û£¬Çë·µ»Ø½«A´®±äÎªB´®ËùÐèÒªµÄ×îÐ¡´ú¼Û¡£±£Ö¤Á½´®³¤¶È¾ùÐ¡ÓÚµÈÓÚ300£¬ÇÒÈýÖÖ´ú¼ÛÖµ¾ùÐ¡ÓÚµÈÓÚ100¡£
-²âÊÔÑùÀý£º
+ * å¯¹äºŽä¸¤ä¸ªå­—ç¬¦ä¸²Aå’ŒBï¼Œæˆ‘ä»¬éœ€è¦è¿›è¡Œæ’å…¥ã€åˆ é™¤å’Œä¿®æ”¹æ“ä½œå°†Aä¸²å˜ä¸ºBä¸²ï¼Œå®šä¹‰c0ï¼Œc1ï¼Œc2åˆ†åˆ«ä¸ºä¸‰ç§æ“ä½œçš„ä»£ä»·ï¼Œè¯·è®¾è®¡ä¸€ä¸ªé«˜æ•ˆç®—æ³•ï¼Œæ±‚å‡ºå°†Aä¸²å˜ä¸ºBä¸²æ‰€éœ€è¦çš„æœ€å°‘ä»£ä»·ã€‚
+ç»™å®šä¸¤ä¸ªå­—ç¬¦ä¸²Aå’ŒBï¼ŒåŠå®ƒä»¬çš„é•¿åº¦å’Œä¸‰ç§æ“ä½œä»£ä»·ï¼Œè¯·è¿”å›žå°†Aä¸²å˜ä¸ºBä¸²æ‰€éœ€è¦çš„æœ€å°ä»£ä»·ã€‚ä¿è¯ä¸¤ä¸²é•¿åº¦å‡å°äºŽç­‰äºŽ300ï¼Œä¸”ä¸‰ç§ä»£ä»·å€¼å‡å°äºŽç­‰äºŽ100ã€‚
+æµ‹è¯•æ ·ä¾‹ï¼š
 "abc",3,"adc",3,5,3,100
-·µ»Ø£º8
+è¿”å›žï¼š8
  */
 
 public class MinCost {
     public int findMinCost(String A, int n, String B, int m, int ic, int dc, int cc) {
         // write code here
-        int[][] result = new int[n + 1][m + 1]; // s1[0...i-1] ×ª»»³É s2[0....j-1]µÄ´ú¼Û
+        // s1[0...i-1] è½¬æ¢æˆ s2[0....j-1]çš„ä»£ä»·
+        int[][] result = new int[n + 1][m + 1];
         for (int i = 1; i <= n; i++) {
             result[i][0] = ic + result[i - 1][0];
         }

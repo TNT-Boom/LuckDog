@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bindarysearch;
+package leetcode.find.bindarysearch;
 
 /*
  * 定义局部最小的概念。arr长度为1时，arr[0]是局部最小。arr的长度为N(N>1)时，

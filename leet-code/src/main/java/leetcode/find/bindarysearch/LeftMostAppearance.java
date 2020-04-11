@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bindarysearch;
+package leetcode.find.bindarysearch;
 
 import java.util.Scanner;
 

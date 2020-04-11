@@ -1,7 +1,7 @@
-package leetcode.zuochengyun.dp;
+package leetcode.dp;
 
 /*
- * Çó×î³¤ÉÏÉý×ÓÐòÁÐ
+ * æ±‚æœ€é•¿ä¸Šå‡å­åºåˆ—
  */
 public class LIS {
     public static void main(String[] args) {
@@ -13,7 +13,8 @@ public class LIS {
         if (A == null) {
             return 0;
         }
-        int[] result = new int[n]; // result[i] 0...iµÄ×î´óÉÏÉý×ÓÐòÁÐ¡£±íÊ¾±ØÐë°üº¬A[i]µÄ×ÓÐòÁÐ¡£ÎÒÖ®Ç°´òËãÉÙÁËÒ»²ã¡°°üº¬µ±Ç°×Ö·û¡±µÄº¬Òå
+        // result[i] 0...içš„æœ€å¤§ä¸Šå‡å­åºåˆ—ã€‚è¡¨ç¤ºå¿…é¡»åŒ…å«A[i]çš„å­åºåˆ—ã€‚æˆ‘ä¹‹å‰æ‰“ç®—å°‘äº†ä¸€å±‚â€œåŒ…å«å½“å‰å­—ç¬¦â€çš„å«ä¹‰
+        int[] result = new int[n];
         result[0] = 1;
         for (int i = 1; i < n; i++) {
             int temp = 0;

@@ -1,6 +1,6 @@
 package leetcode.zte;
 
-import leetcode.zuochengyun.linkedlist.ListNode;
+import leetcode.linkedlist.ListNode;
 
 public class ZTEReverseLinked {
     public static void main(String[] args) {

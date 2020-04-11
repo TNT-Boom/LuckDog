@@ -8,9 +8,14 @@ public class SuperPow implements BaseAlgorithm {
         superPow(10, new int[]{1, 2, 3, 4, 5});
     }
 
-    private final static int q = 5;
+    private final static int Q = 5;
 
-    //(a * b) % c = ((a % c) * b) % c
+    /**
+     * (a * b) % c = ((a % c) * b) % c
+     * @param a
+     * @param b
+     * @return
+     */
     public int intPow(int a, int b) {
         if (b == 0) {
             return 1;
@@ -25,13 +30,16 @@ public class SuperPow implements BaseAlgorithm {
     // (a ^ b) % c = ((a % c) ^ b) % c
 
     public int superPow(int a, int[] b) {
-        a = a % 1337; // ´Ë´¦ÏÈÓÃÉÏÃæµÄ¹«Ê½¼õĞ¡a£¬±ÜÃâÒç³ö¡£ ÏÂÃæµİ¹éÒ²ÊÇÓÃµÄÉÏÃæµÄ¹«Ê½
+        // æ­¤å¤„å…ˆç”¨ä¸Šé¢çš„å…¬å¼å‡å°aï¼Œé¿å…æº¢å‡ºã€‚ ä¸‹é¢é€’å½’ä¹Ÿæ˜¯ç”¨çš„ä¸Šé¢çš„å…¬å¼
+        a = a % 1337;
         int index = 0;
         int res = 1;
         while (index < b.length) {
             int currPow = intPow(a, b[index]);
-            res = intPow(res, 10); //  (a ^ 5) ^ 10 % 3 = (((a ^ 5) % 3 ) ^ 10 ) % 3
-            res = (res * currPow) % 1337; // ÉÏÒ»²½µÄ½á¹û10´ÎÃİÇóÓà£¬ ÔÙ³ËÒÔ±¾´Î½á¹û£¬ÔÙÇóÓà. ´Ë´¦ÊÇ³Ë·¨Õ¹¿ª£¬ÀàËÆintPow
+            //  (a ^ 5) ^ 10 % 3 = (((a ^ 5) % 3 ) ^ 10 ) % 3
+            res = intPow(res, 10);
+            // ä¸Šä¸€æ­¥çš„ç»“æœ10æ¬¡å¹‚æ±‚ä½™ï¼Œ å†ä¹˜ä»¥æœ¬æ¬¡ç»“æœï¼Œå†æ±‚ä½™. æ­¤å¤„æ˜¯ä¹˜æ³•å±•å¼€ï¼Œç±»ä¼¼intPow
+            res = (res * currPow) % 1337;
             ++index;
         }
         return res;

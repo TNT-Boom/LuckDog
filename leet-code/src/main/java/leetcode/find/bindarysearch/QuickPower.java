@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bindarysearch;
+package leetcode.find.bindarysearch;
 
 public class QuickPower {
     public static void main(String[] args) {

@@ -1,5 +1,8 @@
-package leetcode.zuochengyun.linkedlist;
+package leetcode.linkedlist;
 
+/**
+ * @author lmj
+ */
 public class InsertValue {
     public ListNode insert(int[] A, int[] nxt, int val) {
 

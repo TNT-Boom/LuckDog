@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.gailv;
+package leetcode.gailv;
 
 import java.util.Random;
 
