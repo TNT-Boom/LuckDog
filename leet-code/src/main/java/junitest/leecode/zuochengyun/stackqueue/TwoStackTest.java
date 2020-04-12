@@ -1,11 +1,9 @@
 package junitest.leecode.zuochengyun.stackqueue;
 
-import leetcode.zuochengyun.stackqueue.TwoStack;
+import leetcode.stackqueue.TwoStack;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class TwoStackTest {
 

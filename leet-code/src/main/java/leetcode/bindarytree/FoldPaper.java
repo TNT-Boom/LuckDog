@@ -1,12 +1,13 @@
-package leetcode.zuochengyun.bindarytree;
+package leetcode.bindarytree;
 
-/*
- * ÕÛÖ½£¬´òÓ¡ÕÛºÛ·½Ïò
- */
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author lmj
+ * æŠ˜çº¸ï¼Œæ‰“å°æŠ˜ç—•æ–¹å‘
+ */
 public class FoldPaper {
     static List<String> result = new ArrayList<>();
 
@@ -19,7 +20,7 @@ public class FoldPaper {
         return result.toString();
     }
 
-    // µÚ¶ş¸ö²ÎÊı±íÊ¾µ±Ç°µÄÖµ
+    // ç¬¬äºŒä¸ªå‚æ•°è¡¨ç¤ºå½“å‰çš„å€¼
     private static void fold(int i, boolean down, int n) {
         if (i > n) {
             return;
@@ -30,12 +31,12 @@ public class FoldPaper {
 
     }
 
-    /*ÓÃÊı×é´æ´¢½á¹û*/
+    /*ç”¨æ•°ç»„å­˜å‚¨ç»“æœ*/
     public static String ArrayfoldPaper(int n) {
-        int nodeCount = (int) (Math.pow(2, n) - 1 + 1); // 0Î»ÖÃÖÃ¿Õ
+        int nodeCount = (int) (Math.pow(2, n) - 1 + 1); // 0ä½ç½®ç½®ç©º
         int[] result = new int[nodeCount];
 
-        result[1] = 0; // 0´ú±íÏÂ£¬ 1´ú±íÉÏ
+        result[1] = 0; // 0ä»£è¡¨ä¸‹ï¼Œ 1ä»£è¡¨ä¸Š
         for (int i = 1; i < nodeCount + 1; i++) {
             int leftIndex = 2 * i;
             int rightIndex = 2 * i + 1;

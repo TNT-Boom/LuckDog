@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bindarytree;
+package leetcode.bindarytree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class FindErrorNode {
         int second = -1;
         int last = Integer.MIN_VALUE;
         boolean isFirst = true;
-        // µÚÒ»ÄæĞòµÄ½Ï´óÖµ£¬×îºóÒ»´ÎÄæĞòµÄ½ÏĞ¡Öµ
+        // ç¬¬ä¸€é€†åºçš„è¾ƒå¤§å€¼ï¼Œæœ€åä¸€æ¬¡é€†åºçš„è¾ƒå°å€¼
         for (Integer i : results) {
             if (i < last) {
                 if (isFirst) {

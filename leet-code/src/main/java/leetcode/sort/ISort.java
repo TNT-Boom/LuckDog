@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.sort;
+package leetcode.sort;
 
 /**
  * @author lmj

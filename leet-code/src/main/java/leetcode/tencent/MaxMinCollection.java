@@ -3,7 +3,7 @@ package leetcode.tencent;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/*
+/**
  * 对于每组数据，输出两个数，第一个数表示差最小的对数，第二个数表示差最大的对数。
  */
 public class MaxMinCollection {
@@ -22,10 +22,11 @@ public class MaxMinCollection {
     }
 
     private static void getResult(int[] source, int n) {
-        Arrays.sort(source); // 先排序，最小值一定出现在相邻的两个数之间。
+        // 先排序，最小值一定出现在相邻的两个数之间。
+        Arrays.sort(source);
 
-        if (source[0] == source[n - 1]) // 最大最小相同
-        {
+        // 最大最小相同
+        if (source[0] == source[n - 1]) {
             int result = n * (n - 1) / 2;
             System.out.println(result + " " + result);
             return;
@@ -39,8 +40,8 @@ public class MaxMinCollection {
         }
 
         int minCount = 0;
-        if (min == 0) // 找出连续相同的个数，然后计算组合数。
-        {
+        // 找出连续相同的个数，然后计算组合数。
+        if (min == 0) {
             int sameCount = 1;
             int preNum = source[0];
             for (int i = 1; i < n; i++) {
@@ -88,7 +89,11 @@ public class MaxMinCollection {
 
     }
 
-    // 时间复杂度过大。。。。明明是 O(nlgn)
+    /**
+     * 时间复杂度过大。。。。明明是 O(nlgn)
+     * @param source
+     * @param n
+     */
     private static void printResult(int[] source, int n) {
         if (source == null) {
             return;

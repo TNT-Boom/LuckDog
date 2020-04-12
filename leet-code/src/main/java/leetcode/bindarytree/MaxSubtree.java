@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bindarytree;
+package leetcode.bindarytree;
 
 public class MaxSubtree {
     public static class TreeNode {
@@ -19,7 +19,7 @@ public class MaxSubtree {
         return getMax(root, info);
     }
 
-    // Info  ×îĞ¡Öµ£¬×î´óÖµ£¬Ò¶×Ó½ÚµãÊı
+    // Info  æœ€å°å€¼ï¼Œæœ€å¤§å€¼ï¼Œå¶å­èŠ‚ç‚¹æ•°
     private TreeNode getMax(TreeNode root, int[] info) {
         if (root == null) {
             info[0] = Integer.MAX_VALUE;
@@ -27,7 +27,8 @@ public class MaxSubtree {
             info[2] = 0;
             return null;
         }
-        TreeNode lNode = getMax(root.left, info); //ÕâÖÖµİ¹éÊı×é¸´ÓÃÍ¦À÷º¦
+        //è¿™ç§é€’å½’æ•°ç»„å¤ç”¨æŒºå‰å®³
+        TreeNode lNode = getMax(root.left, info);
         int lmin = info[0];
         int lmax = info[1];
         int lnodeNum = info[2];
@@ -39,7 +40,7 @@ public class MaxSubtree {
 
         info[0] = Math.min(root.val, lmin);
         info[1] = Math.max(root.val, rmax);
-        // root¾ÍÊÇÒ»¿ÅËÑË÷Ê÷
+        // rootå°±æ˜¯ä¸€é¢—æœç´¢æ ‘
         if (lmax < root.val && rmin > root.val && lNode == root.left && rNode == root.right) {
             info[2] = lnodeNum + rnodeNum + 1;
             return root;

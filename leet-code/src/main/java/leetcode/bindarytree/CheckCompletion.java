@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bindarytree;
+package leetcode.bindarytree;
 
 import java.util.LinkedList;
 import java.util.Queue;

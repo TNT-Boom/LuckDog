@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.sort;
 
 public class HeapSort {
     public static void main(String[] args) {
@@ -16,11 +16,10 @@ public class HeapSort {
 
     }
 
-    // 涓嬫护
-    private static void inset(int[] heapArray, int x, int currentSize) // 鏁扮粍涓嬫爣浠�1寮�濮嬬畻
+    private static void inset(int[] heapArray, int x, int currentSize)
     {
         int hole = ++currentSize;
-        for (; hole > 1 && x < heapArray[hole / 2]; hole = hole / 2) // hole鍚戜笂婊�
+        for (; hole > 1 && x < heapArray[hole / 2]; hole = hole / 2)
         {
             heapArray[hole] = heapArray[hole / 2];
         }
@@ -38,7 +37,7 @@ public class HeapSort {
         int temp = heapArray[currentSize];
         for (; hole * 2 <= currentSize; hole = child) {
             child = hole * 2;
-            if (child != currentSize && heapArray[child + 1] < heapArray[child]) //閫夋嫨杈冨皬鐨勪竴涓猚hild
+            if (child != currentSize && heapArray[child + 1] < heapArray[child])
             {
                 child++;
             }

@@ -6,18 +6,18 @@ public class Compare {
         int as = sign(a);
         int bs = sign(b);
         int cs = sign(c);
-        // ²»Í¬Îª1£¬ÏàÍ¬Îª0
+        // ä¸åŒä¸º1ï¼Œç›¸åŒä¸º0
         int difabs = as ^ bs;
         int sameabs = flip(difabs);
 
         int returnA = difabs * as + sameabs * cs;
         int returnB = flip(returnA);
-        // returnA returnBÒ»¸ö0£¬Ò»¸ö1
+        // returnA returnBä¸€ä¸ª0ï¼Œä¸€ä¸ª1
         return a * returnA + b * returnB;
     }
 
     /**
-     *  Õı1 ¸º0 £¬Õı°üÀ¨0
+     *  æ­£1 è´Ÿ0 ï¼Œæ­£åŒ…æ‹¬0
      * @param n
      * @return
      */

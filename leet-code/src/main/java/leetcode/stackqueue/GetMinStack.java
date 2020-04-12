@@ -1,7 +1,10 @@
-package leetcode.zuochengyun.stackqueue;
+package leetcode.stackqueue;
 
 import java.util.Stack;
 
+/**
+ * 能够取最小值的栈
+ */
 public class GetMinStack {
     Stack<Integer> data = new Stack<>();
     Stack<Integer> mins = new Stack<>();

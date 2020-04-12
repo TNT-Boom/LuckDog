@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bindarytree;
+package leetcode.bindarytree;
 
 /*
  * 有一棵二叉树，请设计一个算法判断这棵二叉树是否为平衡二叉树。

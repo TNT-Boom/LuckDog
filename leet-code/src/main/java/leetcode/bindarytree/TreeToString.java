@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bindarytree;
+package leetcode.bindarytree;
 
 public class TreeToString {
     public class TreeNode {

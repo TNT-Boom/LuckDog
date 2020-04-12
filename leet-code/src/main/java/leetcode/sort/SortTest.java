@@ -1,10 +1,8 @@
-package leetcode.zuochengyun.sort;
+package leetcode.sort;
 
-import com.sun.deploy.util.StringUtils;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 /**
  * @author limingjian

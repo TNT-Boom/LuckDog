@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.sort;
+package leetcode.sort;
 
 public class Sorts {
 

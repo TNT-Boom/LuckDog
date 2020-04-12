@@ -1,6 +1,6 @@
 package junitest.leecode.zuochengyun.stackqueue;
 
-import leetcode.zuochengyun.stackqueue.GetMinStack;
+import leetcode.stackqueue.GetMinStack;
 import org.junit.Before;
 import org.junit.Test;
 

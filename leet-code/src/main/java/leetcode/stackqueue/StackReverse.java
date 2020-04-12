@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.stackqueue;
+package leetcode.stackqueue;
 
 import java.util.Stack;
 

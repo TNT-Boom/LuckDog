@@ -1,4 +1,4 @@
-package leetcode.zuochengyun.bindarytree;
+package leetcode.bindarytree;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -77,9 +77,10 @@ public class PrintTree {
                 nlast = node.right;
             }
 
-            if (last == node) // µ¯³öµÄ½ÚµãµÈÓÚlast£¬Ôò»»ĞĞ
-            {
-                last = nlast; // lastÖ¸ÏòÏÂÒ»ĞĞµÄ×îºóÒ»¸ö½Úµã¡£
+            // å¼¹å‡ºçš„èŠ‚ç‚¹ç­‰äºlastï¼Œåˆ™æ¢è¡Œ
+            if (last == node) {
+                // lastæŒ‡å‘ä¸‹ä¸€è¡Œçš„æœ€åä¸€ä¸ªèŠ‚ç‚¹ã€‚
+                last = nlast;
                 results.add(currValues);
                 currValues = new LinkedList<>();
             }
