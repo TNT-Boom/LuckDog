@@ -2,12 +2,10 @@ package leetcode.find.bindarysearch;
 
 
 
-/*
- * ¸ø¶¨Ò»¿ÃÍêÈ«¶þ²æÊ÷µÄ¸ù½Úµãroot£¬·µ»ØÕâ¿ÃÊ÷µÄ½Úµã¸öÊý¡£Èç¹ûÍêÈ«¶þ²æÊ÷µÄ½ÚµãÊýÎªN£¬ÇëÊµÏÖÊ±¼ä¸´ÔÓ¶ÈµÍÓÚO(N)µÄ½â·¨¡£
-¸ø¶¨Ê÷µÄ¸ù½áµãroot£¬Çë·µ»ØÊ÷µÄ´óÐ¡¡£
+/**
+ * ç»™å®šä¸€æ£µå®Œå…¨äºŒå‰æ ‘çš„æ ¹èŠ‚ç‚¹rootï¼Œè¿”å›žè¿™æ£µæ ‘çš„èŠ‚ç‚¹ä¸ªæ•°ã€‚å¦‚æžœå®Œå…¨äºŒå‰æ ‘çš„èŠ‚ç‚¹æ•°ä¸ºNï¼Œè¯·å®žçŽ°æ—¶é—´å¤æ‚åº¦ä½ŽäºŽO(N)çš„è§£æ³•ã€‚
+ ç»™å®šæ ‘çš„æ ¹ç»“ç‚¹rootï¼Œè¯·è¿”å›žæ ‘çš„å¤§å°ã€‚
  */
-// Î´µ÷ÊÔ
-
 public class CountNodes {
     public class TreeNode {
         int val = 0;

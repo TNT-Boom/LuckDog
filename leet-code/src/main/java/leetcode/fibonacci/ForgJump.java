@@ -1,4 +1,4 @@
-package leetcode.Fibonacci;
+package leetcode.fibonacci;
 
 /**
  * @author limingjian
