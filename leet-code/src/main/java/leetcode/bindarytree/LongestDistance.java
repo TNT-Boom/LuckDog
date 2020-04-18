@@ -1,8 +1,8 @@
 package leetcode.bindarytree;
 
-/*
- * ´Ó¶ş²æÊ÷µÄ½ÚµãA³ö·¢£¬¿ÉÒÔÏòÉÏ»òÕßÏòÏÂ×ß£¬µ«ÑØÍ¾µÄ½ÚµãÖ»ÄÜ¾­¹ıÒ»´Î£¬µ±µ½´ï½ÚµãBÊ±£¬Â·¾¶ÉÏµÄ½ÚµãÊı½Ğ×÷Aµ½BµÄ¾àÀë¡£¶ÔÓÚ¸ø¶¨µÄÒ»¿Ã¶ş²æÊ÷£¬ÇóÕû¿ÃÊ÷ÉÏ½Úµã¼äµÄ×î´ó¾àÀë¡£
-¸ø¶¨Ò»¸ö¶ş²æÊ÷µÄÍ·½áµãroot£¬Çë·µ»Ø×î´ó¾àÀë¡£±£Ö¤µãÊı´óÓÚµÈÓÚ2Ğ¡ÓÚµÈÓÚ500.s
+/**
+ * ä»äºŒå‰æ ‘çš„èŠ‚ç‚¹Aå‡ºå‘ï¼Œå¯ä»¥å‘ä¸Šæˆ–è€…å‘ä¸‹èµ°ï¼Œä½†æ²¿é€”çš„èŠ‚ç‚¹åªèƒ½ç»è¿‡ä¸€æ¬¡ï¼Œå½“åˆ°è¾¾èŠ‚ç‚¹Bæ—¶ï¼Œè·¯å¾„ä¸Šçš„èŠ‚ç‚¹æ•°å«ä½œAåˆ°Bçš„è·ç¦»ã€‚å¯¹äºç»™å®šçš„ä¸€æ£µäºŒå‰æ ‘ï¼Œæ±‚æ•´æ£µæ ‘ä¸ŠèŠ‚ç‚¹é—´çš„æœ€å¤§è·ç¦»ã€‚
+ç»™å®šä¸€ä¸ªäºŒå‰æ ‘çš„å¤´ç»“ç‚¹rootï¼Œè¯·è¿”å›æœ€å¤§è·ç¦»ã€‚ä¿è¯ç‚¹æ•°å¤§äºç­‰äº2å°äºç­‰äº500.s
 
  */
 public class LongestDistance {
@@ -21,19 +21,22 @@ public class LongestDistance {
         return getLongest(root, record);
     }
 
-    private int getLongest(TreeNode root, int[] record) // ·µ»ØµÄÊÇ×î´ó¾àÀë
+    private int getLongest(TreeNode root, int[] record) // è¿”å›çš„æ˜¯æœ€å¤§è·ç¦»
     {
         if (root == null) {
             record[0] = 0;
             return 0;
         }
         int lmax = getLongest(root.left, record);
-        int maxFromLeft = record[0]; // ×ó×ÓÊ÷µ½root×óº£×ÓµÄ×î´ó¾àÀë
+        // å·¦å­æ ‘åˆ°rootå·¦å­©å­çš„æœ€å¤§è·ç¦»
+        int maxFromLeft = record[0];
         int rmax = getLongest(root.right, record);
-        int maxFromRight = record[0]; // ÓÒ×ÓÊ÷µ½rootÓÒº¢×ÓµÄ×î´ó¾àÀë
+        // å³å­æ ‘åˆ°rootå³å­©å­çš„æœ€å¤§è·ç¦»
+        int maxFromRight = record[0];
         int curr = maxFromLeft + maxFromRight + 1;
 
-        record[0] = Math.max(maxFromLeft, maxFromRight) + 1; // µ½rootµÄÉî¶È
+        // åˆ°rootçš„æ·±åº¦
+        record[0] = Math.max(maxFromLeft, maxFromRight) + 1;
         return Math.max(Math.max(lmax, rmax), curr);
     }
 }

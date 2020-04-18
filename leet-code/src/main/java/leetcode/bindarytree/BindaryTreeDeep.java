@@ -3,8 +3,8 @@ package leetcode.bindarytree;
 /**
  * @author limingjian
  * @date 2020/4/12
- * ¶ş²æÊ÷Éî¶È
- * »³ÒÉÓÃ£ºµİ¹é£¬1 + max(deep(left) + deep(right))
+ * äºŒå‰æ ‘æ·±åº¦
+ * æ€€ç–‘ç”¨ï¼šé€’å½’ï¼Œ1 + max(deep(left) + deep(right))
  */
 public class BindaryTreeDeep {
 }

@@ -1,8 +1,9 @@
 package leetcode.bindarytree;
 
-/*
- * ÓÐÒ»¿Ã¶þ²æÊ÷£¬ÇëÉè¼ÆÒ»¸öËã·¨ÅÐ¶ÏÕâ¿Ã¶þ²æÊ÷ÊÇ·ñÎªÆ½ºâ¶þ²æÊ÷¡£
-¸ø¶¨¶þ²æÊ÷µÄ¸ù½áµãroot£¬Çë·µ»ØÒ»¸öboolÖµ£¬´ú±íÕâ¿ÃÊ÷ÊÇ·ñÎªÆ½ºâ¶þ²æÊ÷¡£
+/**
+ * @author lmj
+ * æœ‰ä¸€æ£µäºŒå‰æ ‘ï¼Œè¯·è®¾è®¡ä¸€ä¸ªç®—æ³•åˆ¤æ–­è¿™æ£µäºŒå‰æ ‘æ˜¯å¦ä¸ºå¹³è¡¡äºŒå‰æ ‘ã€‚
+ç»™å®šäºŒå‰æ ‘çš„æ ¹ç»“ç‚¹rootï¼Œè¯·è¿”å›žä¸€ä¸ªboolå€¼ï¼Œä»£è¡¨è¿™æ£µæ ‘æ˜¯å¦ä¸ºå¹³è¡¡äºŒå‰æ ‘ã€‚
  */
 public class CheckBalance {
     public class TreeNode {

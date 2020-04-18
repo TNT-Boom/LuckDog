@@ -3,11 +3,11 @@ package leetcode.bindarytree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/*
- * ÓĞÒ»¿Ã¶ş²æÊ÷,ÇëÉè¼ÆÒ»¸öËã·¨ÅĞ¶ÏËüÊÇ·ñÊÇÍêÈ«¶ş²æÊ÷¡£
-¸ø¶¨¶ş²æÊ÷µÄ¸ù½áµãroot£¬Çë·µ»ØÒ»¸öboolÖµ´ú±íËüÊÇ·ñÎªÍêÈ«¶ş²æÊ÷¡£Ê÷µÄ½áµã¸öÊıĞ¡ÓÚµÈÓÚ500¡£
+/**
+ * æœ‰ä¸€æ£µäºŒå‰æ ‘,è¯·è®¾è®¡ä¸€ä¸ªç®—æ³•åˆ¤æ–­å®ƒæ˜¯å¦æ˜¯å®Œå…¨äºŒå‰æ ‘ã€‚
+ ç»™å®šäºŒå‰æ ‘çš„æ ¹ç»“ç‚¹rootï¼Œè¯·è¿”å›ä¸€ä¸ªboolå€¼ä»£è¡¨å®ƒæ˜¯å¦ä¸ºå®Œå…¨äºŒå‰æ ‘ã€‚æ ‘çš„ç»“ç‚¹ä¸ªæ•°å°äºç­‰äº500ã€‚
  */
-public class CheckCompletion {
+public class CheckCompletionBindaryTree {
 
     public class TreeNode {
         int val = 0;
@@ -20,6 +20,7 @@ public class CheckCompletion {
     }
 
     public boolean chk(TreeNode root) {
+        // ç”¨é˜Ÿåˆ—å­˜å‚¨æ¯ä¸ªéœ€è¦æ£€æŸ¥çš„èŠ‚ç‚¹
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         if (root == null) {
             return true;
@@ -27,15 +28,16 @@ public class CheckCompletion {
         queue.offer(root);
         while (!queue.isEmpty()) {
             TreeNode curr = queue.poll();
-            if (curr.right != null && curr.left == null) // ×ó¿Õ£¬ÓÒ²»¿Õ£¬=
-            {
+            // å·¦ç©ºï¼Œå³ä¸ç©ºï¼Œ=
+            if (curr.right != null && curr.left == null) {
                 return false;
             }
-            if (!(curr.right != null && curr.left != null)) // ²»ÊÇ×óÓÒ½ÚµãÈ«ÓĞ£¬ÔòÏÂÒ»¸ö½Úµã±ØĞëÊÇÒ¶×Ó
-            {
-                if (!queue.isEmpty()) // ÏÂÒ»¸ö½Úµã±ØĞëÊÇÒ¶×Ó½Úµã
-                {
+            // ä¸æ˜¯å·¦å³èŠ‚ç‚¹å…¨æœ‰ï¼Œåˆ™ä¸‹ä¸€ä¸ªèŠ‚ç‚¹å¿…é¡»æ˜¯å¶å­
+            if (!(curr.right != null && curr.left != null)) {
+                // ä¸‹ä¸€ä¸ªèŠ‚ç‚¹å¿…é¡»æ˜¯å¶å­èŠ‚ç‚¹ï¼Œæ‰€ä»¥æ£€æŸ¥ä¸‹ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+                if (!queue.isEmpty()) {
                     TreeNode next = queue.peek();
+                    // å¦‚æœè¿™ä¸ªèŠ‚ç‚¹çš„çˆ¶èŠ‚ç‚¹æœ¬èº«å°±ä¸æ˜¯å·¦å³å…¨æœ‰ï¼Œç»“æœè¿™ä¸ªèŠ‚ç‚¹åˆæœ‰å­©å­èŠ‚ç‚¹ï¼Œé‚£ä¹ˆä¸æ˜¯å¶å­èŠ‚ç‚¹äº†
                     if (next.left != null || next.right != null) {
                         return false;
                     }
