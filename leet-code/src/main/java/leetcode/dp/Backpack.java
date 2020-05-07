@@ -8,6 +8,11 @@ package leetcode.dp;
  * 测试样例：
  * [1,2,3],[1,2,3],3,6
  * 返回：6
+ * 动态规划
+ * 新建一个二维数组 result[前i件物品][不超过的重量] = 最大价值
+ * 1、对于 1件物品，那如果物品的重量没有超过 j,那么就直接将这个物品放进去
+ * 2、对于其他的，要么还是现在这么多件，即i放不进去，取result[i-1][j]
+ * 要么看是否可以将i放进去。 j - w[i - 1] >= 0 ? 如果大等于0  则是result[i - 1][j - w[i-1]] + v[i-1], 否则当作0
  */
 public class Backpack {
     public static void main(String[] args) {
