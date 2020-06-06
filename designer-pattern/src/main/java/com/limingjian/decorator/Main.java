@@ -13,7 +13,7 @@ import com.limingjian.decorator.bean.coffee.Expresso;
  */
 public class Main {
     public static void main(String[] args) {
-        // ´´½¨Ò»±­´øÅ£ÄÌ£¬ÄÌÓÍµÄÅ¨Ëõ¿§·È
+        // åˆ›å»ºä¸€æ¯å¸¦ç‰›å¥¶ï¼Œå¥¶æ²¹çš„æµ“ç¼©å’–å•¡
         Beverage expresso = new Expresso();
         Beverage milkCoffe = new Milk(expresso, 5);
         Beverage creamCoffe = new Cream(milkCoffe, 5);
