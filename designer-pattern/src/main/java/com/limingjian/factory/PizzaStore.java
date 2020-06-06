@@ -12,6 +12,6 @@ public abstract class PizzaStore {
         return pizza;
     }
 
-    // 工厂方法
+    //  宸ュ巶鏂规硶
     public abstract Pizza createPizza(String type);
 }
