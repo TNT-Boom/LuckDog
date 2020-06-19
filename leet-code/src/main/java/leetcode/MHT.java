@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 /*
- * ÏÈ¹¹ÔìºÃ£¬È»ºóÖğ²ãÉ¾³ıÒ¶×Ó£¬Ö±µ½ËùÓĞµÄ¶¼ÊÇÒ¶×Ó£¬´ËÊ±Ê£1-2¸ö
+ * å…ˆæ„é€ å¥½ï¼Œç„¶åé€å±‚åˆ é™¤å¶å­ï¼Œç›´åˆ°æ‰€æœ‰çš„éƒ½æ˜¯å¶å­ï¼Œæ­¤æ—¶å‰©1-2ä¸ª
  */
 public class MHT implements BaseAlgorithm {
     @Override
@@ -55,11 +55,11 @@ public class MHT implements BaseAlgorithm {
             }
         }
 
-        while (true) // Öğ²ãÉ¾³ı£¬ÓÃÁ½¸öList»¥»»£¬±£Ö¤Ò»²ãÒ»²ã
+        while (true) // é€å±‚åˆ é™¤ï¼Œç”¨ä¸¤ä¸ªListäº’æ¢ï¼Œä¿è¯ä¸€å±‚ä¸€å±‚
         {
 
             for (Integer nodeVal : leaves1) {
-                for (Integer neighbor : nodes.get(nodeVal).neighbors) // Ò¶×Ó½ÚµãÓÉÓÚÒª±»É¾³ı£¬ËùÒÔÆäÁÚ¾Ó½â³ıÓëÒ¶×Ó½ÚµãµÄ¹ØÁª
+                for (Integer neighbor : nodes.get(nodeVal).neighbors) // å¶å­èŠ‚ç‚¹ç”±äºè¦è¢«åˆ é™¤ï¼Œæ‰€ä»¥å…¶é‚»å±…è§£é™¤ä¸å¶å­èŠ‚ç‚¹çš„å…³è”
                 {
                     nodes.get(neighbor).neighbors.remove(nodeVal);
                     if (nodes.get(neighbor).isLeaves()) {
